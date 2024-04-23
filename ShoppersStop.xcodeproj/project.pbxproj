@@ -18,6 +18,7 @@
 		611199112BD73F43006E4E59 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199102BD73F43006E4E59 /* NetworkErrorView.swift */; };
 		611199152BD74159006E4E59 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199142BD74159006E4E59 /* OnboardingViewModel.swift */; };
 		611199172BD741D1006E4E59 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199162BD741D1006E4E59 /* APIManager.swift */; };
+		611199192BD753B9006E4E59 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199182BD753B9006E4E59 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		611199102BD73F43006E4E59 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		611199142BD74159006E4E59 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		611199162BD741D1006E4E59 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		611199182BD753B9006E4E59 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */,
 				611198E62BD7281E006E4E59 /* OnboardingView.swift */,
+				611199182BD753B9006E4E59 /* HomeView.swift */,
 				611199142BD74159006E4E59 /* OnboardingViewModel.swift */,
 				611199102BD73F43006E4E59 /* NetworkErrorView.swift */,
 				611199162BD741D1006E4E59 /* APIManager.swift */,
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				611199172BD741D1006E4E59 /* APIManager.swift in Sources */,
+				611199192BD753B9006E4E59 /* HomeView.swift in Sources */,
 				611199152BD74159006E4E59 /* OnboardingViewModel.swift in Sources */,
 				611199112BD73F43006E4E59 /* NetworkErrorView.swift in Sources */,
 				6111990F2BD7286C006E4E59 /* Products.swift in Sources */,

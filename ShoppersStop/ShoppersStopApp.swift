@@ -12,7 +12,20 @@ import SwiftData
 struct ShoppersStopApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingView()
+            MainView()
         }.modelContainer(for: Product.self)
+    }
+}
+
+
+struct MainView: View {
+    @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
+    
+    var body: some View {
+        if isOnboardingDone {
+            HomeView()
+        } else {
+            OnboardingView()
+        }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
     @State var isDone: Bool = false
-  @ObservedObject var viewModel = OnboardingViewModel()
+    @ObservedObject var viewModel = OnboardingViewModel()
     @Environment(\.modelContext) var modelContext
     var body: some View {
         VStack{
@@ -58,7 +58,6 @@ struct OnboardingView: View {
     }
     
     func saveProducts(_ products: ProductsModel) async {
-        
         Task {
             for product in products.products {
                 try? await saveProduct(product)
@@ -66,14 +65,10 @@ struct OnboardingView: View {
                 // delay introduced to show transition animation
             try? await Task.sleep(nanoseconds: 2_000_000_000)
             enableGetStarted()
-            
-            
         }
-      
-        
     }
     
-    func saveProduct(_ product: ProductModel) async throws{
+    func saveProduct(_ product: ProductModel) async throws {
         if let title = product.title,
            let id = product.id,
            let description = product.description,
