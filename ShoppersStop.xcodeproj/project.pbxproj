@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		611198E52BD7281E006E4E59 /* ShoppersStopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */; };
-		611198E72BD7281E006E4E59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611198E62BD7281E006E4E59 /* ContentView.swift */; };
+		611198E72BD7281E006E4E59 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611198E62BD7281E006E4E59 /* OnboardingView.swift */; };
 		611198E92BD72820006E4E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611198E82BD72820006E4E59 /* Assets.xcassets */; };
 		611198EC2BD72820006E4E59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611198EB2BD72820006E4E59 /* Preview Assets.xcassets */; };
 		611198F62BD72820006E4E59 /* ShoppersStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611198F52BD72820006E4E59 /* ShoppersStopTests.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		611198E12BD7281E006E4E59 /* ShoppersStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppersStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppersStopApp.swift; sourceTree = "<group>"; };
-		611198E62BD7281E006E4E59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		611198E62BD7281E006E4E59 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		611198E82BD72820006E4E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		611198EB2BD72820006E4E59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		611198F12BD72820006E4E59 /* ShoppersStopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppersStopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */,
-				611198E62BD7281E006E4E59 /* ContentView.swift */,
+				611198E62BD7281E006E4E59 /* OnboardingView.swift */,
 				611199102BD73F43006E4E59 /* NetworkErrorView.swift */,
 				6111990E2BD7286C006E4E59 /* Products.swift */,
 				611198E82BD72820006E4E59 /* Assets.xcassets */,
@@ -265,7 +265,7 @@
 			files = (
 				611199112BD73F43006E4E59 /* NetworkErrorView.swift in Sources */,
 				6111990F2BD7286C006E4E59 /* Products.swift in Sources */,
-				611198E72BD7281E006E4E59 /* ContentView.swift in Sources */,
+				611198E72BD7281E006E4E59 /* OnboardingView.swift in Sources */,
 				611198E52BD7281E006E4E59 /* ShoppersStopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
