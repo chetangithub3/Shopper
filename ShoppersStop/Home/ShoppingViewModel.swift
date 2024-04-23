@@ -6,23 +6,17 @@
 //
 
 import Foundation
-
+@MainActor
 class ShoppingViewModel: ObservableObject {
     
     @Published var products: [Product] = []
     var productService = ProductsService()
     
-   @MainActor func getProducts() async {
+    func getProducts() async {
         Task{
             let products = await productService.fetchProducts()
-            for product in products {
-                print(product.title)
-            }
             self.products = products
         }
-         
-        
     }
-    
     
 }

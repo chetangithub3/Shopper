@@ -24,11 +24,10 @@ struct ProductsService {
         }
     }()
     
-    @MainActor func fetchProducts() async -> [Product] {
+    func fetchProducts() async -> [Product] {
         
         do {
             let data = try await persistantContainer.mainContext.fetch(FetchDescriptor<Product>())
-            
             return data
         } catch {
             return []
