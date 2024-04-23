@@ -111,15 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */,
-				611198E62BD7281E006E4E59 /* OnboardingView.swift */,
-				611199182BD753B9006E4E59 /* HomeView.swift */,
-				611199202BD768BD006E4E59 /* ImageView.swift */,
-				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
-				6111991E2BD75BE5006E4E59 /* ProductsService.swift */,
-				611199142BD74159006E4E59 /* OnboardingViewModel.swift */,
-				611199102BD73F43006E4E59 /* NetworkErrorView.swift */,
-				611199162BD741D1006E4E59 /* APIManager.swift */,
-				6111990E2BD7286C006E4E59 /* Products.swift */,
+				611199262BD76DEC006E4E59 /* Home */,
+				611199232BD76DA6006E4E59 /* Onboarding */,
+				611199242BD76DC8006E4E59 /* ReusableViews */,
+				611199222BD76D8D006E4E59 /* Services */,
 				611198E82BD72820006E4E59 /* Assets.xcassets */,
 				611198EA2BD72820006E4E59 /* Preview Content */,
 			);
@@ -149,6 +144,43 @@
 				611199012BD72820006E4E59 /* ShoppersStopUITestsLaunchTests.swift */,
 			);
 			path = ShoppersStopUITests;
+			sourceTree = "<group>";
+		};
+		611199222BD76D8D006E4E59 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6111991E2BD75BE5006E4E59 /* ProductsService.swift */,
+				611199162BD741D1006E4E59 /* APIManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		611199232BD76DA6006E4E59 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6111990E2BD7286C006E4E59 /* Products.swift */,
+				611198E62BD7281E006E4E59 /* OnboardingView.swift */,
+				611199142BD74159006E4E59 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		611199242BD76DC8006E4E59 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				611199102BD73F43006E4E59 /* NetworkErrorView.swift */,
+				611199202BD768BD006E4E59 /* ImageView.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		611199262BD76DEC006E4E59 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
+				611199182BD753B9006E4E59 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
