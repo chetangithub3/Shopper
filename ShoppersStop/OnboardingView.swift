@@ -47,7 +47,6 @@ struct OnboardingView: View {
         }
         .padding()
         .onAppear(perform: {
-        
             Task {
                 let fetchedProducts = try await viewModel.fetchProducts()
                 if let products = fetchedProducts{
@@ -55,9 +54,7 @@ struct OnboardingView: View {
                 }
             }
         })
-        
-        
-    
+ 
     }
     
     func saveProducts(_ products: ProductsModel) async {

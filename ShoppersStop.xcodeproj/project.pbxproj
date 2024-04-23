@@ -21,6 +21,7 @@
 		611199192BD753B9006E4E59 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199182BD753B9006E4E59 /* HomeView.swift */; };
 		6111991D2BD75BC3006E4E59 /* ShoppingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */; };
 		6111991F2BD75BE5006E4E59 /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111991E2BD75BE5006E4E59 /* ProductsService.swift */; };
+		611199212BD768BD006E4E59 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199202BD768BD006E4E59 /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		611199182BD753B9006E4E59 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewModel.swift; sourceTree = "<group>"; };
 		6111991E2BD75BE5006E4E59 /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
+		611199202BD768BD006E4E59 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				611198E42BD7281E006E4E59 /* ShoppersStopApp.swift */,
 				611198E62BD7281E006E4E59 /* OnboardingView.swift */,
 				611199182BD753B9006E4E59 /* HomeView.swift */,
+				611199202BD768BD006E4E59 /* ImageView.swift */,
 				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
 				6111991E2BD75BE5006E4E59 /* ProductsService.swift */,
 				611199142BD74159006E4E59 /* OnboardingViewModel.swift */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611199212BD768BD006E4E59 /* ImageView.swift in Sources */,
 				611199172BD741D1006E4E59 /* APIManager.swift in Sources */,
 				611199192BD753B9006E4E59 /* HomeView.swift in Sources */,
 				611199152BD74159006E4E59 /* OnboardingViewModel.swift in Sources */,

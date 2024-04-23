@@ -40,12 +40,14 @@ struct ProductItemView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-//            Image(systemName: "photo") // Placeholder image, you can replace this with the actual product image
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 150, height: 150)
-//                .cornerRadius(8)
-            
+            if let thumbnailURL = product.thumbnail {
+                ImageView(imageURLString: thumbnailURL)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: getScreenBounds().width / 3, height: getScreenBounds().width / 3)
+                
+                    .clipped()
+                    .cornerRadius(10)
+            }
             Text(product.title)
                 .font(.headline)
                 .padding(.top, 8)
@@ -59,10 +61,18 @@ struct ProductItemView: View {
                 .foregroundColor(.gray)
             
             Spacer()
-        }
+        }.frame(width: getScreenBounds().width / 2.5 , alignment: .leading)
         .padding(8)
         .background(Color.white)
         .cornerRadius(8)
         .shadow(radius: 4)
+        .onAppear(perform: {
+          
+        })
+    }
+}
+extension View {
+    func getScreenBounds() -> CGRect {
+        return UIScreen.main.bounds
     }
 }
