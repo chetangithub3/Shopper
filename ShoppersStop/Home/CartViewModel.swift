@@ -9,22 +9,28 @@ import Foundation
 
 class CartViewModel: ObservableObject {
     
-    @Published var cartItems: [Product : Int] = [:]
-    @Published var totalPrice: Double = 0.0 
+    @Published var cartItems: [Product : Int] = [:] {
+        didSet {
+            calculateTotalCost()
+            calculateTotalNumberOfItems()
+        }
+    }
+    @Published var totalPrice: Double = 0.0
+    @Published var totalNumberOfItems: Int = 0
     
     func addToCart(product: Product){
         cartItems[product] = 1
-        calculateTotalCost()
+       
     }
     
     func updateQuantity(product: Product, quantity: Int) {
         cartItems[product] = quantity
-        calculateTotalCost()
+      
     }
     
     func removeProduct(product: Product) {
         cartItems.removeValue(forKey: product)
-        calculateTotalCost()
+        
     }
     
     func calculateTotalCost() {
@@ -36,5 +42,11 @@ class CartViewModel: ObservableObject {
         }
         self.totalPrice = Double(totalCost)
     }
+    
+    func calculateTotalNumberOfItems() {
+       let values =  cartItems.values
+      //  values.reduce
+    }
+    
     
 }

@@ -17,21 +17,55 @@ struct CartButton: View {
                 NavigationLink {
                     CartView().environmentObject(cartViewModel)
                 } label: {
-                    Image(systemName: "cart.fill")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(
-                            Circle()
-                                .foregroundColor(.orange)
-                        )
-                        .padding(.horizontal)
+                    
+                        Image(systemName: "cart.fill")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(
+                                Circle()
+                                    .foregroundColor(.orange)
+                            )
+                            .padding(.horizontal)
+                            .overlay {
+                                if !cartViewModel.cartItems.isEmpty {
+                                  
+                                    VStack{
+                                        HStack{
+                                            Spacer()
+                                            ZStack{
+                                                Circle()
+                                                    .foregroundColor(.red)
+                                                    .frame(width: 20)
+                                                Text("\(cartViewModel.cartItems.count)")
+                                                    .foregroundStyle(.white)
+                                            }
+                                         
+                                        }
+                                      
+                                        Spacer()
+                                    }
+                                }
+                            }
+                        
+                     
+                        
+                    
+                    
                 }
             }
         }
     }
 }
 
+struct CartCountIndicator: View {
+    var count: Int
+    var body: some View{
+        VStack{
+            
+        }
+    }
+}
 #Preview {
     CartButton()
 }
