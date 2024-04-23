@@ -54,6 +54,9 @@ struct ProductDetailView: View {
 
             }
         }.padding()
+            .overlay {
+                CartButton().environmentObject(cartViewModel)
+            }
 
     }
 }

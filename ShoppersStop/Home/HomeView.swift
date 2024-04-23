@@ -37,28 +37,7 @@ struct HomeView: View {
                     }
             }
             .overlay {
-                VStack{
-                    Spacer()
-                    HStack{
-                        Spacer()
-                        NavigationLink {
-                            CartView().environmentObject(cartViewModel)
-                        } label: {
-                            Image(systemName: "cart.fill")
-                                .font(.title)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(
-                                    Circle()
-                                        .foregroundColor(.orange)
-                                )
-                                .padding(.horizontal)
-                        }
-                    }
-                }
-                
-
-                
+                CartButton().environmentObject(cartViewModel)
             }
            
             

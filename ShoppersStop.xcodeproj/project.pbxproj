@@ -26,6 +26,7 @@
 		6111992A2BD8134B006E4E59 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199292BD8134B006E4E59 /* CartView.swift */; };
 		6111992C2BD814CF006E4E59 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992B2BD814CF006E4E59 /* ProductView.swift */; };
 		6111992E2BD814F6006E4E59 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992D2BD814F6006E4E59 /* ProductDetailView.swift */; };
+		611199302BD8455F006E4E59 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992F2BD8455F006E4E59 /* CartButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		611199292BD8134B006E4E59 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		6111992B2BD814CF006E4E59 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		6111992D2BD814F6006E4E59 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		6111992F2BD8455F006E4E59 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			children = (
 				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
 				611199182BD753B9006E4E59 /* HomeView.swift */,
+				6111992F2BD8455F006E4E59 /* CartButton.swift */,
 				6111992B2BD814CF006E4E59 /* ProductView.swift */,
 				6111992D2BD814F6006E4E59 /* ProductDetailView.swift */,
 				611199292BD8134B006E4E59 /* CartView.swift */,
@@ -339,6 +342,7 @@
 				611198E52BD7281E006E4E59 /* ShoppersStopApp.swift in Sources */,
 				6111991F2BD75BE5006E4E59 /* ProductsService.swift in Sources */,
 				611199282BD81266006E4E59 /* CartViewModel.swift in Sources */,
+				611199302BD8455F006E4E59 /* CartButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
