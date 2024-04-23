@@ -10,19 +10,18 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
     @State var isDone: Bool = false
-  
+  @ObservedObject var viewModel = OnboardingViewModel()
+    @Environment(\.modelContext) var modelContext
     var body: some View {
         VStack{
             headingView
-                .onTapGesture {
-                    enableGetStarted()
-                }
+               
             descriptionView
             
             if isDone {
                 Spacer()
                 Button(action: {
-             
+                    
                 }, label: {
                     Text("Get Started")
                         .font(.headline)
@@ -36,7 +35,6 @@ struct OnboardingView: View {
                         .animation(.spring())
                 })
             } else {
-
                 HStack{
                     ProgressView()
                     Text("Fetching products...")
@@ -45,9 +43,46 @@ struct OnboardingView: View {
             }
         }
         .padding()
+        .onAppear(perform: {
+            Task {
+                let fetchedProducts = try await viewModel.fetchProducts()
+                if let products = fetchedProducts{
+                    await saveProducts(products)
+                }
+            }
+        })
+        
         
     
     }
+    
+    func saveProducts(_ products: ProductsModel) async {
+        Task{
+            for product in products.products {
+                try? await saveProduct(product)
+                print("saved")
+            }
+            self.isDone = true
+            print("Is Done")
+        }
+      
+        
+    }
+    
+    func saveProduct(_ product: ProductModel) async throws{
+        if let title = product.title,
+           let id = product.id,
+           let description = product.description,
+           let price = product.price,
+           let category = product.category,
+           let thumbnail = product.thumbnail,
+           let images = product.images {
+            let databaseProduct = Product(id: id, category: category, title: title, desc: description, price: price, thumbnail: thumbnail, images: images)
+        }
+           
+           
+    }
+    
   
     func enableGetStarted() {
         isOnboardingDone = true
