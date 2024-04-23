@@ -26,7 +26,7 @@ import SwiftData
     }
 
 @Model
-class Product {
+class Product: Hashable {
     let id: Int
     let category: String
     let title: String

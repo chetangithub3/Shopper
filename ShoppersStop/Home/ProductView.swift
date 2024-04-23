@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ProductView: View {
+    @EnvironmentObject var cartViewModel: CartViewModel
     let product: Product
     
     var body: some View {
         NavigationLink {
-            ProductDetailView(product: product)
+            ProductDetailView(product: product).environmentObject(cartViewModel)
         } label: {
             VStack(alignment: .leading) {
                 if let thumbnailURL = product.thumbnail {

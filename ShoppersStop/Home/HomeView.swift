@@ -27,7 +27,7 @@ struct HomeView: View {
                 ScrollView(.vertical) {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
                         ForEach(viewModel.filteredProducts, id: \.id) { product in
-                            ProductView(product: product)
+                            ProductView(product: product).environmentObject(cartViewModel)
                         }
                     }
                     .padding()
@@ -42,7 +42,7 @@ struct HomeView: View {
                     HStack{
                         Spacer()
                         NavigationLink {
-                            CartView()
+                            CartView().environmentObject(cartViewModel)
                         } label: {
                             Image(systemName: "cart.fill")
                                 .font(.title)
