@@ -21,7 +21,10 @@ struct OnboardingView: View {
             if isDone {
                 Spacer()
                 Button(action: {
-                    
+                    withAnimation {
+                        isOnboardingDone = true
+                    }
+                
                 }, label: {
                     Text("Get Started")
                         .font(.headline)
@@ -85,7 +88,6 @@ struct OnboardingView: View {
     
   @MainActor
     func enableGetStarted() {
-        isOnboardingDone = true
         withAnimation {
             isDone = true
         }
