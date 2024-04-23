@@ -44,6 +44,7 @@ struct OnboardingView: View {
         }
         .padding()
         .onAppear(perform: {
+        
             Task {
                 let fetchedProducts = try await viewModel.fetchProducts()
                 if let products = fetchedProducts{
@@ -57,13 +58,16 @@ struct OnboardingView: View {
     }
     
     func saveProducts(_ products: ProductsModel) async {
-        Task{
+        
+        Task {
             for product in products.products {
                 try? await saveProduct(product)
-                print("saved")
             }
-            self.isDone = true
-            print("Is Done")
+                // delay introduced to show transition animation
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            enableGetStarted()
+            
+            
         }
       
         
@@ -78,12 +82,13 @@ struct OnboardingView: View {
            let thumbnail = product.thumbnail,
            let images = product.images {
             let databaseProduct = Product(id: id, category: category, title: title, desc: description, price: price, thumbnail: thumbnail, images: images)
+            modelContext.insert(databaseProduct)
         }
            
            
     }
     
-  
+  @MainActor
     func enableGetStarted() {
         isOnboardingDone = true
         withAnimation {
@@ -117,6 +122,3 @@ struct OnboardingView: View {
 
 
 
-#Preview {
-    OnboardingView()
-}
