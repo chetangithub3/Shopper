@@ -9,14 +9,38 @@ import Foundation
 @MainActor
 class ShoppingViewModel: ObservableObject {
     
-    @Published var products: [Product] = []
+    @Published var allProducts: [Product] = []
     var productService = ProductsService()
-    
+    @Published var selectedCategory: ProductCategory = .skincare {
+        didSet {
+            filterProducts()
+        }
+    }
+    @Published var filteredProducts: [Product] = []
     func getProducts() async {
-        Task{
+        Task {
             let products = await productService.fetchProducts()
-            self.products = products
+            self.allProducts = products
+            filterProducts()
         }
     }
     
+    func filterProducts() {
+       
+        if selectedCategory == .all {
+            self.filteredProducts = allProducts
+        } else {
+            self.filteredProducts = allProducts.filter({$0.category == selectedCategory.rawValue})
+        }
+    }
+    
+}
+
+enum ProductCategory: String, CaseIterable {
+    case all
+    case groceries
+    case fragrances
+    case laptops
+    case skincare
+    case smartphones
 }

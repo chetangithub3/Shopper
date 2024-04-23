@@ -13,23 +13,57 @@ struct HomeView: View {
     @StateObject var viewModel = ShoppingViewModel()
     var body: some View {
         NavigationStack{
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
-                    ForEach(viewModel.products, id: \.id) { product in
-                        ProductItemView(product: product)
+            VStack{
+                ScrollView(.horizontal) {
+                    Picker("", selection: $viewModel.selectedCategory) {
+                        ForEach(ProductCategory.allCases, id: \.self) { category in
+                            Text(category.rawValue.capitalized)
+                        }
+                    } .pickerStyle(.segmented)
+                }
+                .padding(.horizontal)
+//                .onChange(of: viewModel.selectedCategory, { oldValue, newValue in
+//                    viewModel.filterProducts()
+//                })
+               
+               
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                        ForEach(viewModel.filteredProducts, id: \.id) { product in
+                            ProductItemView(product: product)
+                        }
                     }
-                }
+                    .padding()
+                }.navigationTitle("Shopper's Stop")
+                    .task {
+                        await viewModel.getProducts()
+                    }
+            }
+            .overlay {
+                VStack(alignment: .trailing){
+                    Spacer()
+                    HStack{
+                      Spacer()
+                        Image(systemName: "cart.fill")
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(
+                                Circle()
+                                    .foregroundColor(.orange)
+                            )
+                    }
+                    
+                }.ignoresSafeArea()
                 .padding()
-            }.navigationTitle("Shopper's Stop")
-                .task {
-                    await viewModel.getProducts()
-                }
+            }
+           
             
         }
     }
-    
-  
 }
+
+
 
 //#Preview {
 //    HomeView()
