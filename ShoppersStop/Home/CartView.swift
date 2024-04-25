@@ -58,26 +58,43 @@ struct CartView: View {
               
 
                 if let selectedCoupon = viewModel.selectedCoupon {
-                HStack {
-                    Text("Cart total: ")
-                    Spacer()
-                    Text("\(viewModel.cartTotal)")
-                }.padding(.vertical)
-                    HStack {
-                        Text("Coupon applied: ")
-                        Spacer()
-                        Text("-\(viewModel.discountedAmount)")
-                    }.padding(.vertical)
+                    VStack(spacing: 12){
+                        HStack {
+                            Text("Cart total: ")
+                            Spacer()
+                            Text("\(String(format: "%.2f", viewModel.cartTotal))")
+                        }
+                            HStack {
+                                Text("Coupon applied: ")
+                                Spacer()
+                                Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
+                            }.foregroundColor(.orange)
+                            Divider()
+                    }.padding()
                 }
                 HStack {
                     Text("Total: ")
                     Spacer()
-                    Text("\(viewModel.totalPrice)")
-                }.padding(.vertical)
+                    Text("\(String(format: "%.2f", viewModel.totalPrice))")
+                }.padding([.horizontal, .bottom])
+                    .bold()
+                Button(action: {
+                            
+                           }) {
+                               Text("Checkout")
+                                   .foregroundColor(.white)
+                                   .font(.headline)
+                                   .padding()
+                                   .frame(maxWidth: .infinity)
+                                   .background(Color.orange)
+                                   .cornerRadius(10)
+                           }
+                           .padding(.horizontal)
             } else {
                 Text("Cart is empty")
             }
         }.navigationTitle("Your Cart")
+            .navigationBarItems(trailing: Text("^[\(viewModel.totalNumberOfItems) Item](inflect: true)").foregroundStyle(.orange))
     }
 }
 extension NumberFormatter {
@@ -145,7 +162,10 @@ struct CartItem: View {
            
     }
 }
-
+extension Color {
+    static let customYellow = Color(UIColor(red: 1.0, green: 0.615, blue: 0.110, alpha: 1.0))
+ 
+}
 #Preview {
     CartView()
 }
