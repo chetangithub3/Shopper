@@ -11,7 +11,7 @@ struct CartView: View {
     @EnvironmentObject var viewModel: CartViewModel
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             if !viewModel.cartItems.isEmpty {
                 ScrollView{
                     ForEach(viewModel.cartItems.sorted(by: { $0.key.id < $1.key.id }), id: \.key.id) { (key, value) in
@@ -66,29 +66,31 @@ struct CartItem: View {
             if let thumbnail = cartItem.0.thumbnail {
                 ImageView(imageURLString: thumbnail)
                     .scaledToFill()
-                    .frame(width: getScreenBounds().width / 4, height: getScreenBounds().width / 4)
+                    .frame(width: getScreenBounds().width / 5, height: getScreenBounds().width / 5)
+                    .clipped()
                     .cornerRadius(10)
-                    .padding()
-                
+                    .padding(4)
             }
-            VStack(alignment: .leading){
+            HStack(alignment: .center){
                 Text(cartItem.0.title)
-                    .font(.title)
+                    .font(.caption)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
                     .bold()
-                Stepper(value: $count, in: 0...10) {
-                    Text("Quantity: \(count)")
-                }.onChange(of: count) { oldValue, newValue in
-                    if newValue == 0 {
-                        cartViewModel.removeProduct(product: cartItem.0)
-                    } else {
-                        cartViewModel.updateQuantity(product: cartItem.0, quantity: count)
-                    }
+                Spacer()
+                CartStepper(itemCount: $count, range: 0...10)
+                    .onChange(of: count) { oldValue, newValue in
+                        if newValue == 0 {
+                            cartViewModel.removeProduct(product: cartItem.0)
+                        } else {
+                            cartViewModel.updateQuantity(product: cartItem.0, quantity: count)
+                        }
                 }
             }.padding(.horizontal)
-                .foregroundColor(.white)
-        } .background(Color.orange.gradient)
+               
+        }.background(Color.orange.opacity(0.7).gradient)
             .cornerRadius(10)
-        .padding()
+            .padding([.horizontal, .top])
            
     }
 }
