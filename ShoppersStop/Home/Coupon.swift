@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 
-struct Coupon : Identifiable{
+struct Coupon : Identifiable, Equatable{
     let id = UUID()
     let name: String
     let code: String

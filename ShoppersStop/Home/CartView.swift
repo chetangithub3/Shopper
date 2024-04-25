@@ -18,24 +18,43 @@ struct CartView: View {
                         CartItem(cartItem: (key,value))
                     }
                 }
-                if let couponApplied = viewModel.selectedCoupon {
-                    HStack{
-                        Text("'\(couponApplied.name)' applied")
-                    }
-                } else {
-                    NavigationLink {
-                        CouponListView().environmentObject(viewModel)
-                    } label: {
+                
+                NavigationLink {
+                    CouponListView().environmentObject(viewModel)
+                } label: {
                         HStack {
-                            Text("Apply coupons")
-                            Spacer()
-                            Text("->")
-                        }.padding(.vertical)
-                            .foregroundColor(.black)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                    }
-                }
+                            if let couponApplied = viewModel.selectedCoupon {
+                                Spacer()
+                                Text("'\(couponApplied.name)' applied")
+                                    .bold()
+                                    .padding()
+                                Spacer()
+                            } else {
+                                Text("Apply coupon").bold()
+                                    .padding(.horizontal)
+                                Spacer()
+                                VStack{
+                                    Image(systemName: "arrow.right")
+                                         .resizable()
+                                         
+                                         .foregroundColor(.black)
+                                         .frame(width: 25, height: 25)
+                                         .padding()
+                                         .cornerRadius(8)
+                                         .border(.black, width: 2)
+                                }.background(Color.white)
+                                    .buttonBorderShape(.capsule)
+                                    .border(.black, width: 4)
+                            }
+                          
+                          
+                        }
+                            .foregroundColor(.white)
+                            .background(Color.black)
+                            .cornerRadius(8)
+                    
+                }.padding()
+
               
 
                 
@@ -53,7 +72,9 @@ struct CartView: View {
 struct CartItem: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     @State var count = 1
-    
+    var totalCost : Int {
+        return cartItem.0.price * count
+    }
     var cartItem: (Product, Int)
     init(cartItem: (Product, Int)) {
         self.cartItem = cartItem
@@ -71,12 +92,23 @@ struct CartItem: View {
                     .cornerRadius(10)
                     .padding(4)
             }
-            HStack(alignment: .center){
+            VStack(alignment: .leading, spacing: 10){
                 Text(cartItem.0.title)
-                    .font(.caption)
+                    .font(.subheadline)
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
                     .bold()
+                Text(cartItem.0.category.capitalized)
+                    .font(.caption)
+                   
+            }
+                
+            Spacer()
+            VStack(alignment: .trailing){
+                Text("$\(totalCost)")
+                    .foregroundStyle(.white)
+                    .bold()
+                
                 Spacer()
                 CartStepper(itemCount: $count, range: 0...10)
                     .onChange(of: count) { oldValue, newValue in
@@ -85,9 +117,8 @@ struct CartItem: View {
                         } else {
                             cartViewModel.updateQuantity(product: cartItem.0, quantity: count)
                         }
-                }
-            }.padding(.horizontal)
-               
+                    }
+            }.padding()
         }.background(Color.orange.opacity(0.7).gradient)
             .cornerRadius(10)
             .padding([.horizontal, .top])

@@ -42,14 +42,13 @@ struct ProductDetailView: View {
                     HStack{
                         Text(product.title)
                             .font(.title3)
-                      
+                      Spacer()
                         
                         Text("$\(product.price)")
+                            .font(.subheadline)
                     }.padding(.horizontal)
+                        .bold()
                 }
-                
-               
-                
                 Text(product.desc)
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
