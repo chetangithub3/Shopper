@@ -15,14 +15,16 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     Picker("", selection: $viewModel.selectedCategory) {
                         ForEach(ProductCategory.allCases, id: \.self) { category in
                             Text(category.rawValue.capitalized)
                         }
-                    } .pickerStyle(.segmented)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding()
                 }
-                .padding(.horizontal)
+                
                
                 ScrollView(.vertical) {
                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {

@@ -18,6 +18,27 @@ struct CartView: View {
                         CartItem(cartItem: (key,value))
                     }
                 }
+                if let couponApplied = viewModel.selectedCoupon {
+                    HStack{
+                        Text("'\(couponApplied.name)' applied")
+                    }
+                } else {
+                    NavigationLink {
+                        CouponListView().environmentObject(viewModel)
+                    } label: {
+                        HStack {
+                            Text("Apply coupons")
+                            Spacer()
+                            Text("->")
+                        }.padding(.vertical)
+                            .foregroundColor(.black)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                }
+              
+
+                
                 HStack {
                     Text("Total: \(viewModel.totalPrice)")
                 }
@@ -40,21 +61,35 @@ struct CartItem: View {
         
     }
     var body: some View {
-        VStack{
-            HStack{
-                Text(cartItem.0.title)
+        
+        HStack {
+            if let thumbnail = cartItem.0.thumbnail {
+                ImageView(imageURLString: thumbnail)
+                    .scaledToFill()
+                    .frame(width: getScreenBounds().width / 4, height: getScreenBounds().width / 4)
+                    .cornerRadius(10)
+                    .padding()
                 
             }
-            Stepper(value: $count, in: 0...10) {
-                Text("Quantity: \(count)")
-            }.onChange(of: count) { oldValue, newValue in
-                if newValue == 0 {
-                    cartViewModel.removeProduct(product: cartItem.0)
-                } else {
-                    cartViewModel.updateQuantity(product: cartItem.0, quantity: count)
+            VStack(alignment: .leading){
+                Text(cartItem.0.title)
+                    .font(.title)
+                    .bold()
+                Stepper(value: $count, in: 0...10) {
+                    Text("Quantity: \(count)")
+                }.onChange(of: count) { oldValue, newValue in
+                    if newValue == 0 {
+                        cartViewModel.removeProduct(product: cartItem.0)
+                    } else {
+                        cartViewModel.updateQuantity(product: cartItem.0, quantity: count)
+                    }
                 }
-            }
-        }
+            }.padding(.horizontal)
+                .foregroundColor(.white)
+        } .background(Color.orange.gradient)
+            .cornerRadius(10)
+        .padding()
+           
     }
 }
 

@@ -53,6 +53,9 @@ struct OnboardingView: View {
                     await saveProducts(products)
                 }
             }
+//            Task {
+//               await viewModel.setCoupons()
+//            }
         })
  
     }
@@ -78,10 +81,11 @@ struct OnboardingView: View {
            let images = product.images {
             let databaseProduct = Product(id: id, category: category, title: title, desc: description, price: price, thumbnail: thumbnail, images: images)
             modelContext.insert(databaseProduct)
+            print("Saved Product")
         }
-           
-           
     }
+    
+    
     
   @MainActor
     func enableGetStarted() {

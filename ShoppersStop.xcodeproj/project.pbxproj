@@ -27,6 +27,9 @@
 		6111992C2BD814CF006E4E59 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992B2BD814CF006E4E59 /* ProductView.swift */; };
 		6111992E2BD814F6006E4E59 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992D2BD814F6006E4E59 /* ProductDetailView.swift */; };
 		611199302BD8455F006E4E59 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111992F2BD8455F006E4E59 /* CartButton.swift */; };
+		611199322BD96D02006E4E59 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199312BD96D02006E4E59 /* Coupon.swift */; };
+		611199342BD96E0E006E4E59 /* CouponService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199332BD96E0E006E4E59 /* CouponService.swift */; };
+		611199362BD97767006E4E59 /* CouponListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199352BD97767006E4E59 /* CouponListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		6111992B2BD814CF006E4E59 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		6111992D2BD814F6006E4E59 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		6111992F2BD8455F006E4E59 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
+		611199312BD96D02006E4E59 /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		611199332BD96E0E006E4E59 /* CouponService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponService.swift; sourceTree = "<group>"; };
+		611199352BD97767006E4E59 /* CouponListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				6111991E2BD75BE5006E4E59 /* ProductsService.swift */,
+				611199332BD96E0E006E4E59 /* CouponService.swift */,
 				611199162BD741D1006E4E59 /* APIManager.swift */,
 			);
 			path = Services;
@@ -188,12 +195,14 @@
 			isa = PBXGroup;
 			children = (
 				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
+				611199312BD96D02006E4E59 /* Coupon.swift */,
 				611199182BD753B9006E4E59 /* HomeView.swift */,
 				6111992F2BD8455F006E4E59 /* CartButton.swift */,
 				6111992B2BD814CF006E4E59 /* ProductView.swift */,
 				6111992D2BD814F6006E4E59 /* ProductDetailView.swift */,
 				611199292BD8134B006E4E59 /* CartView.swift */,
 				611199272BD81266006E4E59 /* CartViewModel.swift */,
+				611199352BD97767006E4E59 /* CouponListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -328,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611199342BD96E0E006E4E59 /* CouponService.swift in Sources */,
 				611199212BD768BD006E4E59 /* ImageView.swift in Sources */,
 				6111992E2BD814F6006E4E59 /* ProductDetailView.swift in Sources */,
 				611199172BD741D1006E4E59 /* APIManager.swift in Sources */,
@@ -335,10 +345,12 @@
 				611199152BD74159006E4E59 /* OnboardingViewModel.swift in Sources */,
 				611199112BD73F43006E4E59 /* NetworkErrorView.swift in Sources */,
 				6111992C2BD814CF006E4E59 /* ProductView.swift in Sources */,
+				611199362BD97767006E4E59 /* CouponListView.swift in Sources */,
 				6111990F2BD7286C006E4E59 /* Products.swift in Sources */,
 				6111992A2BD8134B006E4E59 /* CartView.swift in Sources */,
 				611198E72BD7281E006E4E59 /* OnboardingView.swift in Sources */,
 				6111991D2BD75BC3006E4E59 /* ShoppingViewModel.swift in Sources */,
+				611199322BD96D02006E4E59 /* Coupon.swift in Sources */,
 				611198E52BD7281E006E4E59 /* ShoppersStopApp.swift in Sources */,
 				6111991F2BD75BE5006E4E59 /* ProductsService.swift in Sources */,
 				611199282BD81266006E4E59 /* CartViewModel.swift in Sources */,
