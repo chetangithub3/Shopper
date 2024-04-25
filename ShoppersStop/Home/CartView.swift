@@ -57,18 +57,38 @@ struct CartView: View {
 
               
 
-                
+                if let selectedCoupon = viewModel.selectedCoupon {
                 HStack {
-                    Text("Total: \(viewModel.totalPrice)")
+                    Text("Cart total: ")
+                    Spacer()
+                    Text("\(viewModel.cartTotal)")
+                }.padding(.vertical)
+                    HStack {
+                        Text("Coupon applied: ")
+                        Spacer()
+                        Text("-\(viewModel.discountedAmount)")
+                    }.padding(.vertical)
                 }
-               
+                HStack {
+                    Text("Total: ")
+                    Spacer()
+                    Text("\(viewModel.totalPrice)")
+                }.padding(.vertical)
             } else {
                 Text("Cart is empty")
             }
         }.navigationTitle("Your Cart")
     }
 }
-
+extension NumberFormatter {
+    static var twoDecimalPlaces: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
+}
 struct CartItem: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     @State var count = 1

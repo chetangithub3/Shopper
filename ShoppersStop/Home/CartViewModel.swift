@@ -12,15 +12,21 @@ class CartViewModel: ObservableObject {
     var couponService = CouponService()
     @Published var cartItems: [Product : Int] = [:] {
         didSet {
+            calculateDiscount()
             calculateTotalCost()
             calculateTotalNumberOfItems()
+            calculateCartTotal()
         }
     }
     @Published var selectedCoupon: Coupon? {
         didSet{
+            calculateDiscount()
             calculateTotalCost()
+            calculateCartTotal()
         }
     }
+    @Published var discountedAmount: Double = 0.0
+    @Published var cartTotal: Double = 0.0
     @Published var totalPrice: Double = 0.0
     @Published var totalNumberOfItems: Int = 0
     @Published var coupons: [Coupon] = []
@@ -51,7 +57,22 @@ class CartViewModel: ObservableObject {
             self.totalPrice = (1 - discount) * totalPrice
         }
     }
+    func calculateCartTotal() {
+        var cartTotal = 0
+        for cartItem in cartItems {
+            let quantity = cartItem.value
+            let costPerEach = cartItem.key.price
+            cartTotal += costPerEach * quantity
+        }
+        self.cartTotal = Double(cartTotal)
+    }
     
+    func calculateDiscount(){
+        if let discount = selectedCoupon?.discount {
+            print(discount)
+            self.discountedAmount = discount * totalPrice
+        }
+    }
     func calculateTotalNumberOfItems() {
         self.totalNumberOfItems = cartItems.values.reduce(0, +)
     }
