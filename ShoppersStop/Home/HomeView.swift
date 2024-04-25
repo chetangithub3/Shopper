@@ -14,7 +14,7 @@ struct HomeView: View {
     @StateObject var cartViewModel = CartViewModel()
     var body: some View {
         NavigationStack{
-            VStack{
+            VStack(spacing: 0){
                 ScrollView(.horizontal, showsIndicators: false) {
                     Picker("", selection: $viewModel.selectedCategory) {
                         ForEach(ProductCategory.allCases, id: \.self) { category in
@@ -22,7 +22,8 @@ struct HomeView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.top)
                 }
                 
                
@@ -34,13 +35,15 @@ struct HomeView: View {
                     }
                     .padding()
                 }.navigationTitle("Shopper's Stop")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(trailing:
+                        CartButton().environmentObject(cartViewModel)
+                    )
                     .task {
                         await viewModel.getProducts()
                     }
             }
-            .overlay {
-                CartButton().environmentObject(cartViewModel)
-            }
+          
            
             
         }

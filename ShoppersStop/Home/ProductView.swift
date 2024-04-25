@@ -16,36 +16,38 @@ struct ProductView: View {
             ProductDetailView(product: product).environmentObject(cartViewModel)
         } label: {
             VStack(alignment: .leading) {
-                if let thumbnailURL = product.thumbnail {
-                    ImageView(imageURLString: thumbnailURL)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: getScreenBounds().width / 3, height: getScreenBounds().width / 3)
+                ZStack(alignment: .bottomLeading){
+                    if let thumbnailURL = product.thumbnail {
+                        ImageView(imageURLString: thumbnailURL)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: getScreenBounds().width / 2.3, height: getScreenBounds().width / 2)
+                            .clipped()
+                           
+                    }
+                    HStack(alignment: .bottom){
+                        VStack{
+                            Text(product.title)
+                            .font(.subheadline)
+                            .bold()
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2, reservesSpace: true)
+                            .minimumScaleFactor(0.4)
+                        }
+                         Spacer()
+                            Text("$\(product.price)")
+                            .font(.subheadline)
+                    }
+                   
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(Color.orange.gradient)
                     
-                        .clipped()
-                        .cornerRadius(10)
                 }
-                Text(product.title)
-                    .font(.headline)
-                    .padding(.top, 8)
-                
-                Text("Price: $\(product.price)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                
-                Text("Category: \(product.category)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                
-                Spacer()
-            }.frame(width: getScreenBounds().width / 2.5 , alignment: .leading)
-            .padding(8)
-            .background(Color.white)
-            .cornerRadius(8)
-            .shadow(radius: 4)
+            }.frame(width: getScreenBounds().width / 2.3 , height: getScreenBounds().width / 2,  alignment: .leading)
+                .clipped()
+                .cornerRadius(8)
+                .shadow(radius: 2)
         }
-
-        
-       
     }
 }
 

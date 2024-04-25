@@ -54,9 +54,12 @@ struct ProductDetailView: View {
 
             }
         }.padding()
-            .overlay {
-                CartButton().environmentObject(cartViewModel)
-            }
+           
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing:
+                    CartButton().environmentObject(cartViewModel)
+                )
+                
 
     }
 }
