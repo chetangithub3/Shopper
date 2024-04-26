@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import UIKit
     // MARK: - Products
     struct ProductsModel: Decodable, Encodable {
         let products: [ProductModel]
