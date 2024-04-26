@@ -20,7 +20,7 @@ struct CartButton: View {
                     
                         Image(systemName: "cart.fill")
                         .padding(.vertical)
-                            .foregroundColor(.orange)
+                            .foregroundColor(.purple)
                             .overlay {
                                 if cartViewModel.totalNumberOfItems != 0  {
                                     ZStack{

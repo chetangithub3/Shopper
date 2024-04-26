@@ -31,7 +31,7 @@ struct OnboardingView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.orange)
+                        .background(Color.purple)
                         .cornerRadius(10)
                         .opacity(isDone ? 1 : 0)
                         .scaleEffect(isDone ? 1 : 0.1)

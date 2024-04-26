@@ -42,7 +42,7 @@ struct CouponItem: View {
             Image(systemName: "dollarsign.square")
                 .resizable()
                 .scaledToFill()
-                .foregroundColor(.orange)
+                .foregroundColor(.purple)
                 .frame(width: 50, height: 50)
                 .padding(.leading)
             VStack(alignment: .leading){

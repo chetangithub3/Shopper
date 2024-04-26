@@ -68,7 +68,7 @@ struct CartView: View {
                                 Text("Coupon applied: ")
                                 Spacer()
                                 Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
-                            }.foregroundColor(.orange)
+                            }.foregroundColor(.purple)
                             Divider()
                     }.padding()
                 }
@@ -86,7 +86,7 @@ struct CartView: View {
                                    .font(.headline)
                                    .padding()
                                    .frame(maxWidth: .infinity)
-                                   .background(Color.orange)
+                                   .background(Color.purple)
                                    .cornerRadius(10)
                            }
                            .padding(.horizontal)
@@ -156,14 +156,14 @@ struct CartItem: View {
                         }
                     }
             }.padding()
-        }.background(Color.orange.opacity(0.7).gradient)
+        }.background(Color.purple.opacity(0.7).gradient)
             .cornerRadius(10)
             .padding([.horizontal, .top])
            
     }
 }
 extension Color {
-    static let customYellow = Color(UIColor(red: 1.0, green: 0.615, blue: 0.110, alpha: 1.0))
+    static let purple = Color(UIColor(red: 1.0, green: 0.615, blue: 0.110, alpha: 1.0))
  
 }
 #Preview {

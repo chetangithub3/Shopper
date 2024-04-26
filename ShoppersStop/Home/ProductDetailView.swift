@@ -71,7 +71,7 @@ struct ProductDetailView: View {
                 } .padding()
                     .bold()
                     .font(.title3)
-                    .background(Color.orange.gradient)
+                    .background(Color.purple.gradient)
                     .foregroundColor(.white)
               
                
@@ -89,7 +89,7 @@ struct ProductDetailView: View {
                     .padding()
                     .bold()
                     .font(.title3)
-                    .background(Color.orange.gradient)
+                    .background(Color.purple.gradient)
                     .foregroundColor(.white)
                     
                     
