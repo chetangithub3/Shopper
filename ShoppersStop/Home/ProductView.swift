@@ -40,7 +40,7 @@ struct ProductView: View {
                    
                     .padding(8)
                     .foregroundColor(.white)
-                    .background(Color.purple.gradient)
+                    .background(Color.orange.gradient)
                     
                 }
             }.frame(width: getScreenBounds().width / 2.3 , height: getScreenBounds().width / 2,  alignment: .leading)

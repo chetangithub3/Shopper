@@ -68,7 +68,7 @@ struct CartView: View {
                                 Text("Coupon applied: ")
                                 Spacer()
                                 Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
-                            }.foregroundColor(.purple)
+                            }.foregroundColor(.orange)
                             Divider()
                     }.padding()
                 }
@@ -86,7 +86,7 @@ struct CartView: View {
                                    .font(.headline)
                                    .padding()
                                    .frame(maxWidth: .infinity)
-                                   .background(Color.purple)
+                                   .background(Color.orange)
                                    .cornerRadius(10)
                            }
                            .padding(.horizontal)
@@ -156,7 +156,7 @@ struct CartItem: View {
                         }
                     }
             }.padding()
-        }.background(Color.purple.opacity(0.7).gradient)
+        }.background(Color.orange.opacity(0.7).gradient)
             .cornerRadius(10)
             .padding([.horizontal, .top])
            

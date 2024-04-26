@@ -18,31 +18,31 @@ struct ProductDetailView: View {
                 VStack(alignment: .leading, spacing: 0){
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                                if let thumbnail = product.thumbnail{
-                                        ImageView(imageURLString: thumbnail)
-                                            .scaledToFill()
-                                            .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
-                                            .cornerRadius(10)
+                            if let thumbnail = product.thumbnail{
+                                ImageView(imageURLString: thumbnail)
+                                    .scaledToFill()
+                                    .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
+                                    .cornerRadius(10)
+                            }
+                            if let images = product.images {
+                                ForEach(images, id: \.self) { image in
+                                    ImageView(imageURLString: image)
+                                        .scaledToFill()
+                                        .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
+                                        .cornerRadius(10)
                                 }
-                                if let images = product.images {
-                                    ForEach(images, id: \.self) { image in
-                                        ImageView(imageURLString: image)
-                                            .scaledToFill()
-                                            .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
-                                            .cornerRadius(10)
-                                    }
-                                }
+                            }
                         }
                         .scrollTargetLayout()
                     }
                     .scrollTargetBehavior(.viewAligned)
                     .contentMargins(16, for: .automatic)
                     .listRowInsets(EdgeInsets())
-                 
+                    
                     HStack{
                         Text(product.title)
                             .font(.title3)
-                      Spacer()
+                        Spacer()
                         
                         Text("$\(product.price)")
                             .font(.subheadline)
@@ -53,28 +53,33 @@ struct ProductDetailView: View {
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
                     .padding()
+                
+                Text("Reviews:")
+                    .font(.title3)
+                    .bold()
+                
             }
             
             if showStepper{
                 HStack{
                     Spacer()
                     CartStepper(itemCount: $count, range: 0...10)
-                    .onChange(of: count) { oldValue, newValue in
-                        if newValue == 0 {
-                            showStepper = false
-                            cartViewModel.removeProduct(product: product)
-                        } else {
-                            cartViewModel.updateQuantity(product: product, quantity: count)
+                        .onChange(of: count) { oldValue, newValue in
+                            if newValue == 0 {
+                                showStepper = false
+                                cartViewModel.removeProduct(product: product)
+                            } else {
+                                cartViewModel.updateQuantity(product: product, quantity: count)
+                            }
                         }
-                    }
                     Spacer()
                 } .padding()
                     .bold()
                     .font(.title3)
-                    .background(Color.purple.gradient)
+                    .background(Color.orange.gradient)
                     .foregroundColor(.white)
-              
-               
+                
+                
             } else {
                 Button(action: {
                     cartViewModel.addToCart(product: product)
@@ -83,13 +88,13 @@ struct ProductDetailView: View {
                     HStack{
                         Spacer()
                         Text("Add to cart")
-                            
+                        
                         Spacer()
                     }
                     .padding()
                     .bold()
                     .font(.title3)
-                    .background(Color.purple.gradient)
+                    .background(Color.orange.gradient)
                     .foregroundColor(.white)
                     
                     
@@ -97,13 +102,13 @@ struct ProductDetailView: View {
             }
         })
         
-           
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing:
-                    CartButton().environmentObject(cartViewModel)
-                )
-                
-
+        
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing:
+                                CartButton().environmentObject(cartViewModel)
+        )
+        
+        
     }
 }
 
