@@ -40,5 +40,5 @@ struct CartStepper: View {
 
 
 #Preview {
-    CartStepper()
+    CartStepper(itemCount: .constant(10), range: 0...10)
 }
