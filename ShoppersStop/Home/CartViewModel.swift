@@ -30,6 +30,7 @@ class CartViewModel: ObservableObject {
     @Published var totalPrice: Double = 0.0
     @Published var totalNumberOfItems: Int = 0
     @Published var coupons: [Coupon] = []
+    @Published var checkout = false
     func addToCart(product: Product){
         cartItems[product] = 1
        
@@ -93,6 +94,12 @@ class CartViewModel: ObservableObject {
         
     }
     
-   
+    func checkoutCart() {
+        if let selectedCoupon = selectedCoupon {
+            removeCoupon(coupon: selectedCoupon)
+        }
+        cartItems.removeAll()
+        checkout = true
+    }
     
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CartButton: View {
     @EnvironmentObject var cartViewModel: CartViewModel
+    
     var body: some View {
         VStack {
             Spacer()

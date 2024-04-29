@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @EnvironmentObject var cartViewModel: CartViewModel
+    @Environment(\.presentationMode) var presentationMode
     var product: Product
     @State var showStepper = false
     @State var count = 1
@@ -97,6 +98,11 @@ struct ProductDetailView: View {
                     
                     
                 })
+            }
+        })
+        .onChange(of: cartViewModel.checkout, { oldValue, newValue in
+            if newValue {
+                presentationMode.wrappedValue.dismiss()
             }
         })
         

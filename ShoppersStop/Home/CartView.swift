@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CartView: View {
+
     @EnvironmentObject var viewModel: CartViewModel
-    
+    @Environment(\.presentationMode) var presentationMode
+    @State var checkout = false
     var body: some View {
         VStack(spacing: 0){
             if !viewModel.cartItems.isEmpty {
@@ -79,7 +81,7 @@ struct CartView: View {
                 }.padding([.horizontal, .bottom])
                     .bold()
                 Button(action: {
-                            
+                    checkout.toggle()
                            }) {
                                Text("Checkout")
                                    .foregroundColor(.white)
@@ -90,16 +92,21 @@ struct CartView: View {
                                    .cornerRadius(10)
                            }
                            .padding(.horizontal)
+                           .alert(isPresented: $checkout) {
+                               Alert(title: Text("Checkout complete"), message: Text("Please shop again :)"), dismissButton: .destructive(Text("ok"), action: {
+                                   viewModel.checkoutCart()
+                                   presentationMode.wrappedValue.dismiss()
+                                   
+                               }) )
+                                  }
+                          
             } else {
                 Text("Cart is empty")
             }
         }.navigationTitle("Your Cart")
             .navigationBarItems(trailing: Text("^[\(viewModel.totalNumberOfItems) Item](inflect: true)").foregroundStyle(.orange))
     }
+    
+ 
 }
 
-
-
-#Preview {
-    CartView()
-}
