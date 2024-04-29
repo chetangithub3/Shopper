@@ -10,11 +10,17 @@ import SwiftUI
 struct NetworkErrorView: View {
     var body: some View {
         VStack {
-            Image(systemName: "network.slash")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-                .foregroundColor(.primary)
+            Spacer()
+            HStack{
+             Spacer()
+                Image(systemName: "network.slash")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.primary)
+                Spacer()
+            }
+           
             
             Text("No internet connection")
                 .font(.title)
@@ -26,11 +32,10 @@ struct NetworkErrorView: View {
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
+            Spacer()
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
+        .background(Color.white.opacity(0.7))
+        .ignoresSafeArea()
     }
 }
 
