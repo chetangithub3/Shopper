@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CartView: View {
-
+    
     @EnvironmentObject var viewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
     @State var checkout = false
+    
     var body: some View {
         VStack(spacing: 0){
             if !viewModel.cartItems.isEmpty {
@@ -20,44 +21,37 @@ struct CartView: View {
                         CartItem(cartItem: (key,value))
                     }
                 }
-                
                 NavigationLink {
                     CouponListView().environmentObject(viewModel)
                 } label: {
-                        HStack {
-                            if let couponApplied = viewModel.selectedCoupon {
-                                Spacer()
-                                Text("'\(couponApplied.name)' applied")
-                                    .bold()
+                    HStack {
+                        if let couponApplied = viewModel.selectedCoupon {
+                            Spacer()
+                            Text("'\(couponApplied.name)' applied")
+                                .bold()
+                                .padding()
+                            Spacer()
+                        } else {
+                            Text("Apply coupon").bold()
+                                .padding(.horizontal)
+                            Spacer()
+                            VStack{
+                                Image(systemName: "arrow.right")
+                                    .resizable()
+                                    .foregroundColor(.black)
+                                    .frame(width: 25, height: 25)
                                     .padding()
-                                Spacer()
-                            } else {
-                                Text("Apply coupon").bold()
-                                    .padding(.horizontal)
-                                Spacer()
-                                VStack{
-                                    Image(systemName: "arrow.right")
-                                         .resizable()
-                                         
-                                         .foregroundColor(.black)
-                                         .frame(width: 25, height: 25)
-                                         .padding()
-                                         .cornerRadius(8)
-                                         .border(.black, width: 2)
-                                }.background(Color.white)
-                                    .buttonBorderShape(.capsule)
-                                    .border(.black, width: 4)
-                            }
-                          
-                          
+                                    .cornerRadius(8)
+                                    .border(.black, width: 2)
+                            }.background(Color.white)
+                                .buttonBorderShape(.capsule)
+                                .border(.black, width: 4)
                         }
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .cornerRadius(8)
-                    
+                    }
+                    .foregroundColor(.white)
+                    .background(Color.black)
+                    .cornerRadius(8)
                 }.padding([.bottom, .horizontal])
-
-              
 
                 if let selectedCoupon = viewModel.selectedCoupon {
                     VStack(spacing: 12){
@@ -66,12 +60,12 @@ struct CartView: View {
                             Spacer()
                             Text("\(String(format: "%.2f", viewModel.cartTotal))")
                         }
-                            HStack {
-                                Text("Coupon applied: ")
-                                Spacer()
-                                Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
-                            }.foregroundColor(.orange)
-                            Divider()
+                        HStack {
+                            Text("Coupon applied: ")
+                            Spacer()
+                            Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
+                        }.foregroundColor(.orange)
+                        Divider()
                     }.padding()
                 }
                 HStack {
@@ -82,24 +76,22 @@ struct CartView: View {
                     .bold()
                 Button(action: {
                     checkout.toggle()
-                           }) {
-                               Text("Checkout")
-                                   .foregroundColor(.white)
-                                   .font(.headline)
-                                   .padding()
-                                   .frame(maxWidth: .infinity)
-                                   .background(Color.orange)
-                                   .cornerRadius(10)
-                           }
-                           .padding(.horizontal)
-                           .alert(isPresented: $checkout) {
-                               Alert(title: Text("Checkout complete"), message: Text("Please shop again :)"), dismissButton: .destructive(Text("ok"), action: {
-                                   viewModel.checkoutCart()
-                                   presentationMode.wrappedValue.dismiss()
-                                   
-                               }) )
-                                  }
-                          
+                }) {
+                    Text("Checkout")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                .alert(isPresented: $checkout) {
+                    Alert(title: Text("Checkout complete"), message: Text("Please shop again :)"), dismissButton: .destructive(Text("ok"), action: {
+                        viewModel.checkoutCart()
+                        presentationMode.wrappedValue.dismiss()
+                    }) )
+                }
             } else {
                 Text("Cart is empty")
             }
@@ -107,6 +99,6 @@ struct CartView: View {
             .navigationBarItems(trailing: Text("^[\(viewModel.totalNumberOfItems) Item](inflect: true)").foregroundStyle(.orange))
     }
     
- 
+    
 }
 

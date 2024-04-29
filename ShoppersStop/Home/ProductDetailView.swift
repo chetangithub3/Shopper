@@ -11,8 +11,10 @@ struct ProductDetailView: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
     var product: Product
+    
     @State var showStepper = false
     @State var count = 1
+    
     var body: some View {
         ZStack(alignment: .bottom, content: {
             ScrollView(.vertical){
@@ -39,12 +41,10 @@ struct ProductDetailView: View {
                     .scrollTargetBehavior(.viewAligned)
                     .contentMargins(16, for: .automatic)
                     .listRowInsets(EdgeInsets())
-                    
                     HStack{
                         Text(product.title)
                             .font(.title3)
                         Spacer()
-                        
                         Text("$\(product.price)")
                             .font(.subheadline)
                     }.padding(.horizontal)
@@ -55,10 +55,7 @@ struct ProductDetailView: View {
                     .multilineTextAlignment(.leading)
                     .padding()
                     .padding(.bottom, 40)
-           
-                
             }
-            
             if showStepper{
                 HStack{
                     Spacer()
@@ -77,8 +74,6 @@ struct ProductDetailView: View {
                     .font(.title3)
                     .background(Color.orange.gradient)
                     .foregroundColor(.white)
-                
-                
             } else {
                 Button(action: {
                     cartViewModel.addToCart(product: product)
@@ -87,7 +82,6 @@ struct ProductDetailView: View {
                     HStack{
                         Spacer()
                         Text("Add to cart")
-                        
                         Spacer()
                     }
                     .padding()
@@ -95,8 +89,6 @@ struct ProductDetailView: View {
                     .font(.title3)
                     .background(Color.orange.gradient)
                     .foregroundColor(.white)
-                    
-                    
                 })
             }
         })
@@ -105,14 +97,8 @@ struct ProductDetailView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         })
-        
-        
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing:
-                                CartButton().environmentObject(cartViewModel)
-        )
-        
-        
+        .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
     }
 }
 

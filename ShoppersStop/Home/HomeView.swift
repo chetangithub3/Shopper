@@ -35,9 +35,7 @@ struct HomeView: View {
                     .padding()
                 }.navigationTitle("Shopper's Stop")
                     .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarItems(trailing:
-                                            CartButton().environmentObject(cartViewModel)
-                    )
+                    .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
                     .task {
                         await viewModel.getProducts()
                     }

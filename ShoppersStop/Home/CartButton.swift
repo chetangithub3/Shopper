@@ -18,7 +18,6 @@ struct CartButton: View {
                 NavigationLink {
                     CartView().environmentObject(cartViewModel)
                 } label: {
-                    
                     Image(systemName: "cart.fill")
                         .padding(.vertical)
                         .foregroundColor(.orange)
@@ -30,7 +29,6 @@ struct CartButton: View {
                                         .frame(width: 15)
                                     Text("\(cartViewModel.totalNumberOfItems)")
                                         .font(.footnote)
-                                    
                                         .foregroundStyle(.white)
                                         .minimumScaleFactor(0.5)
                                 }.offset(x: 10, y: -10)

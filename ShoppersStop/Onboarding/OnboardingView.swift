@@ -15,16 +15,13 @@ struct OnboardingView: View {
     var body: some View {
         VStack{
             headingView
-               
             descriptionView
-            
             if isDone {
                 Spacer()
                 Button(action: {
                     withAnimation {
                         isOnboardingDone = true
                     }
-                
                 }, label: {
                     Text("Get Started")
                         .font(.headline)
@@ -42,7 +39,6 @@ struct OnboardingView: View {
                     ProgressView()
                     Text("Fetching products...")
                 }
-               
             }
         }
         .padding()
@@ -54,7 +50,6 @@ struct OnboardingView: View {
                 }
             }
         })
- 
     }
     
     func saveProducts(_ products: ProductsModel) async {

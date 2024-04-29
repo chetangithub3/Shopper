@@ -10,7 +10,7 @@ import SwiftUI
 struct CartStepper: View {
     @Binding var itemCount: Int
     let range: ClosedRange<Int>
-
+    
     var body: some View {
         HStack {
             Button(action: {

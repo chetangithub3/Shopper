@@ -10,8 +10,8 @@ import Foundation
 @MainActor
 class ShoppingViewModel: ObservableObject {
     
-    @Published var allProducts: [Product] = []
     var productService = ProductsService()
+    @Published var allProducts: [Product] = []
     @Published var selectedCategory: ProductCategory = .all {
         didSet {
             filterProducts()
@@ -28,7 +28,6 @@ class ShoppingViewModel: ObservableObject {
     }
     
     func filterProducts() {
-       
         if selectedCategory == .all {
             self.filteredProducts = allProducts
         } else {

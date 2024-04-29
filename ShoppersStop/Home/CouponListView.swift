@@ -33,11 +33,12 @@ struct CouponListView: View {
 
 
 struct CouponItem: View {
+    
     @EnvironmentObject var cartViewModel: CartViewModel
      var coupon: Coupon
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        
         HStack(spacing: 0){
             Image(systemName: "dollarsign.square")
                 .resizable()
@@ -71,8 +72,6 @@ struct CouponItem: View {
                     .padding(.horizontal)
                     .disabled(cartViewModel.selectedCoupon == coupon)
             }
-
-            
         }.background(Color.white)
             .cornerRadius(4)
             .padding(.horizontal)

@@ -10,6 +10,7 @@ import Foundation
 class CartViewModel: ObservableObject {
     
     var couponService = CouponService()
+    
     @Published var cartItems: [Product : Int] = [:] {
         didSet {
             calculateDiscount()
@@ -31,6 +32,7 @@ class CartViewModel: ObservableObject {
     @Published var totalNumberOfItems: Int = 0
     @Published var coupons: [Coupon] = []
     @Published var checkout = false
+    
     func addToCart(product: Product){
         cartItems[product] = 1
        
@@ -58,6 +60,7 @@ class CartViewModel: ObservableObject {
             self.totalPrice = (1 - discount) * totalPrice
         }
     }
+    
     func calculateCartTotal() {
         var cartTotal = 0
         for cartItem in cartItems {
@@ -73,6 +76,7 @@ class CartViewModel: ObservableObject {
             self.discountedAmount = discount * totalPrice
         }
     }
+    
     func calculateTotalNumberOfItems() {
         self.totalNumberOfItems = cartItems.values.reduce(0, +)
     }
@@ -83,9 +87,6 @@ class CartViewModel: ObservableObject {
             self.coupons = coupons
         }
     }
-    
-    
-    
     
     func removeCoupon(coupon: Coupon) {
         if let index = coupons.firstIndex(where: {$0.id == coupon.id}) {
@@ -101,5 +102,4 @@ class CartViewModel: ObservableObject {
         cartItems.removeAll()
         checkout = true
     }
-    
 }

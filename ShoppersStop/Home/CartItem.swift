@@ -14,13 +14,14 @@ struct CartItem: View {
         return cartItem.0.price * count
     }
     var cartItem: (Product, Int)
+    
     init(cartItem: (Product, Int)) {
         self.cartItem = cartItem
         _count = State(initialValue: cartItem.1)
         
     }
+    
     var body: some View {
-        
         HStack {
             if let thumbnail = cartItem.0.thumbnail {
                 ImageView(imageURLString: thumbnail)
@@ -38,9 +39,7 @@ struct CartItem: View {
                     .bold()
                 Text(cartItem.0.category.capitalized)
                     .font(.caption)
-                   
             }
-                
             Spacer()
             VStack(alignment: .trailing){
                 Text("$\(totalCost)")
@@ -60,7 +59,6 @@ struct CartItem: View {
         }.background(Color.orange.opacity(0.7).gradient)
             .cornerRadius(10)
             .padding([.horizontal, .top])
-           
     }
 }
 
