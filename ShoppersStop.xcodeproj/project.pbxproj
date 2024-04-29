@@ -89,6 +89,7 @@
 		611199402BE02283006E4E59 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		611199422BE02306006E4E59 /* CartStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStepper.swift; sourceTree = "<group>"; };
 		611199442BE02347006E4E59 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		611199462BE024A3006E4E59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +120,7 @@
 		611198D82BD7281E006E4E59 = {
 			isa = PBXGroup;
 			children = (
+				611199462BE024A3006E4E59 /* README.md */,
 				611198E32BD7281E006E4E59 /* ShoppersStop */,
 				611198F42BD72820006E4E59 /* ShoppersStopTests */,
 				611198FE2BD72820006E4E59 /* ShoppersStopUITests */,
