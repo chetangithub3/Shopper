@@ -36,6 +36,7 @@
 		611199412BE02283006E4E59 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199402BE02283006E4E59 /* Utility.swift */; };
 		611199432BE02306006E4E59 /* CartStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199422BE02306006E4E59 /* CartStepper.swift */; };
 		611199452BE02347006E4E59 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199442BE02347006E4E59 /* ImageLoader.swift */; };
+		611199482BE057F0006E4E59 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199472BE057F0006E4E59 /* CartItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		611199422BE02306006E4E59 /* CartStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStepper.swift; sourceTree = "<group>"; };
 		611199442BE02347006E4E59 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		611199462BE024A3006E4E59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		611199472BE057F0006E4E59 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				6111992B2BD814CF006E4E59 /* ProductView.swift */,
 				6111992D2BD814F6006E4E59 /* ProductDetailView.swift */,
 				611199292BD8134B006E4E59 /* CartView.swift */,
+				611199472BE057F0006E4E59 /* CartItem.swift */,
 				611199422BE02306006E4E59 /* CartStepper.swift */,
 				611199272BD81266006E4E59 /* CartViewModel.swift */,
 				611199352BD97767006E4E59 /* CouponListView.swift */,
@@ -370,6 +373,7 @@
 				611199112BD73F43006E4E59 /* NetworkErrorView.swift in Sources */,
 				6111992C2BD814CF006E4E59 /* ProductView.swift in Sources */,
 				611199362BD97767006E4E59 /* CouponListView.swift in Sources */,
+				611199482BE057F0006E4E59 /* CartItem.swift in Sources */,
 				6111990F2BD7286C006E4E59 /* Products.swift in Sources */,
 				6111992A2BD8134B006E4E59 /* CartView.swift in Sources */,
 				611198E72BD7281E006E4E59 /* OnboardingView.swift in Sources */,

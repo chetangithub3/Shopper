@@ -53,6 +53,7 @@ struct ProductDetailView: View {
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
                     .padding()
+                    .padding(.bottom, 40)
            
                 
             }
