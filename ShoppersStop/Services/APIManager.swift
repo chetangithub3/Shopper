@@ -9,8 +9,6 @@ import Foundation
 
 struct APIManager {
     
- 
-    
     func fetch(request: URLRequest?) async -> Result<Data,Error>{
         guard let request = request else {
             return .failure(NetworkError.badRequest)

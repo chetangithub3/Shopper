@@ -53,9 +53,6 @@ struct OnboardingView: View {
                     await saveProducts(products)
                 }
             }
-//            Task {
-//               await viewModel.setCoupons()
-//            }
         })
  
     }

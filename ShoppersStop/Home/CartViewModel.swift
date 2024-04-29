@@ -69,7 +69,6 @@ class CartViewModel: ObservableObject {
     
     func calculateDiscount(){
         if let discount = selectedCoupon?.discount {
-            print(discount)
             self.discountedAmount = discount * totalPrice
         }
     }

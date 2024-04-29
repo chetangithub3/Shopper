@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 @MainActor
 class ShoppingViewModel: ObservableObject {
     
@@ -17,6 +18,7 @@ class ShoppingViewModel: ObservableObject {
         }
     }
     @Published var filteredProducts: [Product] = []
+    
     func getProducts() async {
         Task {
             let products = await productService.fetchProducts()
@@ -36,11 +38,3 @@ class ShoppingViewModel: ObservableObject {
     
 }
 
-enum ProductCategory: String, CaseIterable {
-    case all
-    case groceries
-    case fragrances
-    case laptops
-    case skincare
-    case smartphones
-}

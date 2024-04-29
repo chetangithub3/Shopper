@@ -30,13 +30,6 @@ class OnboardingViewModel: ObservableObject {
                 return nil
         }
     }
-//    
-//    func setCoupons() async {
-//        let coupon = Coupon(name: "Welcome to SS - 30% ", code: "ABCDEF", discount: 0.3)
-//        await couponService.setCoupons(coupons: [coupon])
-//    }
-//    
-    
 }
 
 

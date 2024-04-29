@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+
 struct ImageView: View {
     @StateObject private var imageLoader = ImageLoader()
     let imageURLString: String
@@ -34,21 +35,6 @@ struct ImageView: View {
                 await imageLoader.loadImage(from: imageURL)
             }
         }
-
 }
 
-@MainActor
-class ImageLoader: ObservableObject {
-    
-    @Published var image: UIImage?
 
-    func loadImage(from url: URL) async {
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            image = UIImage(data: data)
-        } catch {
-            print("Error loading image: \(error.localizedDescription)")
-            image = nil
-        }
-    }
-}
