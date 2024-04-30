@@ -10,10 +10,12 @@ import SwiftData
 
 @main
 struct ShoppersStopApp: App {
+    @StateObject private var networkMonitor = NetworkMonitor()
     var body: some Scene {
         WindowGroup {
             MainView()
         }.modelContainer(for: Product.self)
+            .environment(networkMonitor)
     }
 }
 

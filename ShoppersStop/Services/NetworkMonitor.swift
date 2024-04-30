@@ -6,38 +6,24 @@
 //
 
 import Foundation
-import SystemConfiguration
+import Network
 
-class NetworkMonitor: ObservableObject {
-    private var reachability: SCNetworkReachability?
-    
-    @Published var isConnected: Bool = true
+
+@Observable
+final class NetworkMonitor: ObservableObject {
+    private let networkMonitor = NWPathMonitor()
+    private let workerQueue = DispatchQueue(label: "Monitor")
+    var isConnected = true
     
     init() {
-        guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com") else { return }
-        self.reachability = reachability
-        
-        var flags = SCNetworkReachabilityFlags()
-        SCNetworkReachabilityGetFlags(reachability, &flags)
-        isConnected = flags.contains(.reachable)
-        
-    }
-    
-    func startMonitoring() {
-        guard let reachability = reachability else {return}
-        var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-        context.info = UnsafeMutableRawPointer(Unmanaged<NetworkMonitor>.passUnretained(self).toOpaque())
-        SCNetworkReachabilitySetCallback(reachability, { (reachability, flags, info) in
-            guard let info = info else { return }
-            let networkMonitor = Unmanaged<NetworkMonitor>.fromOpaque(info).takeUnretainedValue()
-            networkMonitor.isConnected = flags.contains(.reachable)
-        }, &context)
-        SCNetworkReachabilitySetDispatchQueue(reachability, DispatchQueue.main)
-    }
-    
-    func stopMonitoring() {
-        guard let reachability = reachability else {return}
-        SCNetworkReachabilitySetCallback(reachability, nil, nil)
-        SCNetworkReachabilitySetDispatchQueue(reachability, nil)
+        networkMonitor.pathUpdateHandler = { path in
+            self.isConnected = path.status == .satisfied
+        }
+        Task {
+            await MainActor.run {
+                self.objectWillChange.send()
+            }
+        }
+        networkMonitor.start(queue: workerQueue)
     }
 }

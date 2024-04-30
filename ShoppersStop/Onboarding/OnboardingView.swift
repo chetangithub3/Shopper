@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
+    @AppStorage("fetched") var fetched: Bool = false
     @State var isDone: Bool = false
     @ObservedObject var viewModel = OnboardingViewModel()
     @Environment(\.modelContext) var modelContext
@@ -32,7 +33,7 @@ struct OnboardingView: View {
                         .cornerRadius(10)
                         .opacity(isDone ? 1 : 0)
                         .scaleEffect(isDone ? 1 : 0.1)
-                        .animation(.spring())
+                        .animation(.spring(), value: isOnboardingDone)
                 })
             } else {
                 HStack{
@@ -44,9 +45,14 @@ struct OnboardingView: View {
         .padding()
         .onAppear(perform: {
             Task {
-                let fetchedProducts = try await viewModel.fetchProducts()
-                if let products = fetchedProducts{
-                    await saveProducts(products)
+                if fetched {
+                 enableGetStarted()
+                } else {
+                    let fetchedProducts = try await viewModel.fetchProducts()
+                    if let products = fetchedProducts{
+                        fetched = true
+                        await saveProducts(products)
+                    }
                 }
             }
         })

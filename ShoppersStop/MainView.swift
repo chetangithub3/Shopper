@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
-    @StateObject private var networkMonitor = NetworkMonitor()
+    @Environment(NetworkMonitor.self) private var networkMonitor
     
     init() {
         let appearance = UINavigationBarAppearance()
@@ -24,26 +24,22 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            if isOnboardingDone {
-                HomeView()
-            } else {
-                if networkMonitor.isConnected{
-                    OnboardingView()
+         
+                if isOnboardingDone {
+                    HomeView()
                 } else {
-                    NetworkErrorView()
+                    if networkMonitor.isConnected {
+                        OnboardingView()
+                    } else {
+                        NetworkErrorView()
+                    }
+                  
                 }
-            }
-        }
-        .overlay(content: {
-            if !networkMonitor.isConnected {
+            
+        } .overlay {
+            if !networkMonitor.isConnected{
                 NetworkErrorView()
             }
-        })
-        .onAppear {
-            networkMonitor.startMonitoring()
-        }
-        .onDisappear {
-            networkMonitor.stopMonitoring()
         }
     }
 }
