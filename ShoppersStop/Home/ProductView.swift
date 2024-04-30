@@ -10,21 +10,21 @@ import SwiftUI
 struct ProductView: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     let product: Product
-    
+
     var body: some View {
         NavigationLink {
             ProductDetailView(product: product).environmentObject(cartViewModel)
         } label: {
             VStack(alignment: .leading) {
-                ZStack(alignment: .bottomLeading){
+                ZStack(alignment: .bottomLeading) {
                     if let thumbnailURL = product.thumbnail {
                         ImageView(imageURLString: thumbnailURL)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: getScreenBounds().width / 2.3, height: getScreenBounds().width / 2)
                             .clipped()
                     }
-                    HStack(alignment: .bottom){
-                        VStack{
+                    HStack(alignment: .bottom) {
+                        VStack {
                             Text(product.title)
                                 .font(.subheadline)
                                 .bold()
@@ -40,12 +40,10 @@ struct ProductView: View {
                     .foregroundColor(.white)
                     .background(Color.orange.gradient)
                 }
-            }.frame(width: getScreenBounds().width / 2.3 , height: getScreenBounds().width / 2,  alignment: .leading)
+            }.frame(width: getScreenBounds().width / 2.3, height: getScreenBounds().width / 2, alignment: .leading)
                 .clipped()
                 .cornerRadius(8)
                 .shadow(radius: 2)
         }
     }
 }
-
-

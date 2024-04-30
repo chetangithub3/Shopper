@@ -12,7 +12,6 @@ import SwiftUI
 struct ImageView: View {
     @StateObject private var imageLoader = ImageLoader()
     let imageURLString: String
-    
     var body: some View {
             VStack {
                 if let image = imageLoader.image {
@@ -26,7 +25,6 @@ struct ImageView: View {
                 loadImage()
             }
         }
-        
         func loadImage() {
             guard let imageURL =  URL(string: imageURLString) else {
                 return
@@ -36,5 +34,3 @@ struct ImageView: View {
             }
         }
 }
-
-

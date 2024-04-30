@@ -8,10 +8,10 @@
 import Foundation
 
 class CartViewModel: ObservableObject {
-    
+
     var couponService = CouponService()
-    
-    @Published var cartItems: [Product : Int] = [:] {
+
+    @Published var cartItems: [Product: Int] = [:] {
         didSet {
             calculateDiscount()
             calculateTotalCost()
@@ -20,7 +20,7 @@ class CartViewModel: ObservableObject {
         }
     }
     @Published var selectedCoupon: Coupon? {
-        didSet{
+        didSet {
             calculateDiscount()
             calculateTotalCost()
             calculateCartTotal()
@@ -32,22 +32,19 @@ class CartViewModel: ObservableObject {
     @Published var totalNumberOfItems: Int = 0
     @Published var coupons: [Coupon] = []
     @Published var checkout = false
-    
-    func addToCart(product: Product){
+
+    func addToCart(product: Product) {
         cartItems[product] = 1
-       
     }
-    
+
     func updateQuantity(product: Product, quantity: Int) {
         cartItems[product] = quantity
-      
     }
-    
+
     func removeProduct(product: Product) {
         cartItems.removeValue(forKey: product)
-        
     }
-    
+
     func calculateTotalCost() {
         var totalCost = 0
         for cartItem in cartItems {
@@ -60,7 +57,7 @@ class CartViewModel: ObservableObject {
             self.totalPrice = (1 - discount) * totalPrice
         }
     }
-    
+
     func calculateCartTotal() {
         var cartTotal = 0
         for cartItem in cartItems {
@@ -70,31 +67,30 @@ class CartViewModel: ObservableObject {
         }
         self.cartTotal = Double(cartTotal)
     }
-    
-    func calculateDiscount(){
+
+    func calculateDiscount() {
         if let discount = selectedCoupon?.discount {
             self.discountedAmount = discount * totalPrice
         }
     }
-    
+
     func calculateTotalNumberOfItems() {
         self.totalNumberOfItems = cartItems.values.reduce(0, +)
     }
-    
+
     func fetchCoupons() async {
         let coupons  = await couponService.fetchCoupons()
         await MainActor.run {
             self.coupons = coupons
         }
     }
-    
+
     func removeCoupon(coupon: Coupon) {
         if let index = coupons.firstIndex(where: {$0.id == coupon.id}) {
             coupons.remove(at: index)
         }
-        
     }
-    
+
     func checkoutCart() {
         if let selectedCoupon = selectedCoupon {
             removeCoupon(coupon: selectedCoupon)

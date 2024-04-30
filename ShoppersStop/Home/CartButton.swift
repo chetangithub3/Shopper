@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CartButton: View {
     @EnvironmentObject var cartViewModel: CartViewModel
-    
+
     var body: some View {
         VStack {
             Spacer()
-            HStack{
+            HStack {
                 Spacer()
                 NavigationLink {
                     CartView().environmentObject(cartViewModel)
@@ -22,8 +22,8 @@ struct CartButton: View {
                         .padding(.vertical)
                         .foregroundColor(.orange)
                         .overlay {
-                            if cartViewModel.totalNumberOfItems != 0  {
-                                ZStack{
+                            if cartViewModel.totalNumberOfItems != 0 {
+                                ZStack {
                                     Circle()
                                         .foregroundColor(.red)
                                         .frame(width: 15)

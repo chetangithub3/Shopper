@@ -10,17 +10,16 @@ import SwiftUI
 struct CartItem: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     @State var count = 1
-    var totalCost : Int {
+    var totalCost: Int {
         return cartItem.0.price * count
     }
     var cartItem: (Product, Int)
-    
+
     init(cartItem: (Product, Int)) {
         self.cartItem = cartItem
         _count = State(initialValue: cartItem.1)
-        
     }
-    
+
     var body: some View {
         HStack {
             if let thumbnail = cartItem.0.thumbnail {
@@ -31,7 +30,7 @@ struct CartItem: View {
                     .cornerRadius(10)
                     .padding(4)
             }
-            VStack(alignment: .leading, spacing: 10){
+            VStack(alignment: .leading, spacing: 10) {
                 Text(cartItem.0.title)
                     .font(.subheadline)
                     .lineLimit(1)
@@ -41,14 +40,13 @@ struct CartItem: View {
                     .font(.caption)
             }
             Spacer()
-            VStack(alignment: .trailing){
+            VStack(alignment: .trailing) {
                 Text("$\(totalCost)")
                     .foregroundStyle(.white)
                     .bold()
-                
                 Spacer()
                 CartStepper(itemCount: $count, range: 0...10)
-                    .onChange(of: count) { oldValue, newValue in
+                    .onChange(of: count) { _, newValue in
                         if newValue == 0 {
                             cartViewModel.removeProduct(product: cartItem.0)
                         } else {
@@ -61,5 +59,3 @@ struct CartItem: View {
             .padding([.horizontal, .top])
     }
 }
-
-

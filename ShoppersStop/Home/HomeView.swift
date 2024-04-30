@@ -1,9 +1,9 @@
-    //
-    //  HomeView.swift
-    //  ShoppersStop
-    //
-    //  Created by Chetan Dhowlaghar on 4/22/24.
-    //
+//
+//  HomeView.swift
+//  ShoppersStop
+//
+//  Created by Chetan Dhowlaghar on 4/22/24.
+//
 
 import SwiftUI
 
@@ -12,10 +12,10 @@ struct HomeView: View {
     @State var products: [Product] = []
     @StateObject var viewModel = ShoppingViewModel()
     @StateObject var cartViewModel = CartViewModel()
-    
+
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 0){
+        NavigationStack {
+            VStack(spacing: 0) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     Picker("", selection: $viewModel.selectedCategory) {
                         ForEach(ProductCategory.allCases, id: \.self) { category in
@@ -27,7 +27,10 @@ struct HomeView: View {
                     .padding(.top)
                 }
                 ScrollView(.vertical) {
-                    LazyVGrid(columns: [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)], spacing: 16) {
+                    LazyVGrid(
+                        columns: [GridItem(.flexible(),
+                                           spacing: 16), GridItem(.flexible(), spacing: 16)],
+                        spacing: 16) {
                         ForEach(viewModel.filteredProducts, id: \.id) { product in
                             ProductView(product: product).environmentObject(cartViewModel)
                         }
@@ -37,12 +40,9 @@ struct HomeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
                     .task {
-                        await viewModel.getProducts()
+                         viewModel.getProducts()
                     }
             }
         }
     }
 }
-
-
-

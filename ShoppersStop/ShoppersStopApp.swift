@@ -18,6 +18,3 @@ struct ShoppersStopApp: App {
             .environment(networkMonitor)
     }
 }
-
-
-

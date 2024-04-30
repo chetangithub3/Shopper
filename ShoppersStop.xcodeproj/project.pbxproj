@@ -37,6 +37,7 @@
 		611199432BE02306006E4E59 /* CartStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199422BE02306006E4E59 /* CartStepper.swift */; };
 		611199452BE02347006E4E59 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199442BE02347006E4E59 /* ImageLoader.swift */; };
 		611199482BE057F0006E4E59 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199472BE057F0006E4E59 /* CartItem.swift */; };
+		6111994B2BE17D14006E4E59 /* CouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111994A2BE17D14006E4E59 /* CouponItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		611199442BE02347006E4E59 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		611199462BE024A3006E4E59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		611199472BE057F0006E4E59 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		6111994A2BE17D14006E4E59 /* CouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				6111992F2BD8455F006E4E59 /* CartButton.swift */,
 				6111992B2BD814CF006E4E59 /* ProductView.swift */,
 				6111992D2BD814F6006E4E59 /* ProductDetailView.swift */,
+				6111994A2BE17D14006E4E59 /* CouponItem.swift */,
 				611199292BD8134B006E4E59 /* CartView.swift */,
 				611199472BE057F0006E4E59 /* CartItem.swift */,
 				611199422BE02306006E4E59 /* CartStepper.swift */,
@@ -242,6 +245,7 @@
 				611198DD2BD7281E006E4E59 /* Sources */,
 				611198DE2BD7281E006E4E59 /* Frameworks */,
 				611198DF2BD7281E006E4E59 /* Resources */,
+				611199492BE17805006E4E59 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -358,6 +362,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		611199492BE17805006E4E59 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		611198DD2BD7281E006E4E59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -379,6 +405,7 @@
 				611198E72BD7281E006E4E59 /* OnboardingView.swift in Sources */,
 				6111991D2BD75BC3006E4E59 /* ShoppingViewModel.swift in Sources */,
 				6111993F2BE0225F006E4E59 /* MainView.swift in Sources */,
+				6111994B2BE17D14006E4E59 /* CouponItem.swift in Sources */,
 				611199452BE02347006E4E59 /* ImageLoader.swift in Sources */,
 				611199412BE02283006E4E59 /* Utility.swift in Sources */,
 				611199322BD96D02006E4E59 /* Coupon.swift in Sources */,
@@ -552,6 +579,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ShoppersStop/Preview Content\"";
 				DEVELOPMENT_TEAM = H8X7BGGD4F;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppersStop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -586,6 +614,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ShoppersStop/Preview Content\"";
 				DEVELOPMENT_TEAM = H8X7BGGD4F;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShoppersStop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

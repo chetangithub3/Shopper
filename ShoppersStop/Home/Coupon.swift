@@ -8,12 +8,9 @@
 import Foundation
 import SwiftData
 
-
-struct Coupon : Identifiable, Equatable{
+struct Coupon: Identifiable, Equatable {
     let id = UUID()
     let name: String
     let code: String
     let discount: Double
 }
-
-

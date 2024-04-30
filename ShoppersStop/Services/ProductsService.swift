@@ -10,7 +10,6 @@ import SwiftUI
 import SwiftData
 
 struct ProductsService {
-    
     @Environment(\.modelContext) var modelContext
     let persistantContainer: ModelContainer = {
         do {
@@ -23,16 +22,13 @@ struct ProductsService {
             fatalError("Failed to create a container")
         }
     }()
-    
+
     @MainActor func fetchProducts() -> [Product] {
         do {
             let data =  try persistantContainer.mainContext.fetch(FetchDescriptor<Product>())
-            
             return data
         } catch {
             return []
         }
-        
     }
-    
 }

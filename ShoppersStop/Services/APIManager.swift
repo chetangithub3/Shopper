@@ -8,77 +8,56 @@
 import Foundation
 
 struct APIManager {
-    
-    func fetch(request: URLRequest?) async -> Result<Data,Error>{
+
+    func fetch(request: URLRequest?) async -> Result<Data, Error> {
         guard let request = request else {
             return .failure(NetworkError.badRequest)
         }
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             return .success(data)
-           
         } catch {
             return .failure(NetworkError.unknown(nil))
         }
-    
     }
-       
-  
-    
+
     func mapResponse(response: URLResponse) throws -> Error? {
         guard let httpResponse = response as? HTTPURLResponse else {
             return nil
         }
-        
+
         switch httpResponse.statusCode {
-            case 200..<300:
+        case 200..<300:
                 return nil
-            case 400:
+        case 400:
                 throw NetworkError.badRequest
-            case 403:
+        case 403:
                 throw NetworkError.forbidden
-            case 404:
+        case 404:
                 throw NetworkError.notFound
-            case 422:
+        case 422:
                 throw NetworkError.unprocessableEntity
-            default:
+        default:
                 throw NetworkError.unknown(nil)
         }
     }
 }
 
-
-
 public enum NetworkError: Error, LocalizedError {
-    
     case missingRequiredFields(String)
-    
     case invalidParameters(operation: String, parameters: [Any])
-    
     case badRequest
-    
     case unauthorized
-    
     case paymentRequired
-    
     case forbidden
-    
     case notFound
-    
     case requestEntityTooLarge
-
     case unprocessableEntity
-    
     case http(httpResponse: HTTPURLResponse, data: Data)
-    
     case invalidResponse(Data)
-    
     case deleteOperationFailed(String)
-    
     case network(URLError)
-    
     case unknown(Error?)
-    
 }
 
 extension JSONDecoder {

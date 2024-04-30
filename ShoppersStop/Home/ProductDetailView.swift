@@ -11,17 +11,17 @@ struct ProductDetailView: View {
     @EnvironmentObject var cartViewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
     var product: Product
-    
+
     @State var showStepper = false
     @State var count = 1
-    
+
     var body: some View {
         ZStack(alignment: .bottom, content: {
-            ScrollView(.vertical){
-                VStack(alignment: .leading, spacing: 0){
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 0) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            if let thumbnail = product.thumbnail{
+                            if let thumbnail = product.thumbnail {
                                 ImageView(imageURLString: thumbnail)
                                     .scaledToFill()
                                     .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
@@ -31,7 +31,10 @@ struct ProductDetailView: View {
                                 ForEach(images, id: \.self) { image in
                                     ImageView(imageURLString: image)
                                         .scaledToFill()
-                                        .frame(width: getScreenBounds().width - 40, height: getScreenBounds().width - 100)
+                                        .frame(
+                                            width: getScreenBounds().width - 40,
+                                            height: getScreenBounds().width - 100
+                                        )
                                         .cornerRadius(10)
                                 }
                             }
@@ -41,7 +44,7 @@ struct ProductDetailView: View {
                     .scrollTargetBehavior(.viewAligned)
                     .contentMargins(16, for: .automatic)
                     .listRowInsets(EdgeInsets())
-                    HStack{
+                    HStack {
                         Text(product.title)
                             .font(.title3)
                         Spacer()
@@ -56,11 +59,11 @@ struct ProductDetailView: View {
                     .padding()
                     .padding(.bottom, 40)
             }
-            if showStepper{
-                HStack{
+            if showStepper {
+                HStack {
                     Spacer()
                     CartStepper(itemCount: $count, range: 0...10)
-                        .onChange(of: count) { oldValue, newValue in
+                        .onChange(of: count) { _, newValue in
                             if newValue == 0 {
                                 showStepper = false
                                 cartViewModel.removeProduct(product: product)
@@ -79,7 +82,7 @@ struct ProductDetailView: View {
                     cartViewModel.addToCart(product: product)
                     showStepper.toggle()
                 }, label: {
-                    HStack{
+                    HStack {
                         Spacer()
                         Text("Add to cart")
                         Spacer()
@@ -92,7 +95,7 @@ struct ProductDetailView: View {
                 })
             }
         })
-        .onChange(of: cartViewModel.checkout, { oldValue, newValue in
+        .onChange(of: cartViewModel.checkout, { _, newValue in
             if newValue {
                 presentationMode.wrappedValue.dismiss()
             }
@@ -101,6 +104,3 @@ struct ProductDetailView: View {
         .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
     }
 }
-
-
-

@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct CartView: View {
-    
+
     @EnvironmentObject var viewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
     @State var checkout = false
-    
+
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 0) {
             if !viewModel.cartItems.isEmpty {
-                ScrollView{
+                ScrollView {
                     ForEach(viewModel.cartItems.sorted(by: { $0.key.id < $1.key.id }), id: \.key.id) { (key, value) in
-                        CartItem(cartItem: (key,value))
+                        CartItem(cartItem: (key, value))
                     }
                 }
                 NavigationLink {
@@ -35,7 +35,7 @@ struct CartView: View {
                             Text("Apply coupon").bold()
                                 .padding(.horizontal)
                             Spacer()
-                            VStack{
+                            VStack {
                                 Image(systemName: "arrow.right")
                                     .resizable()
                                     .foregroundColor(.black)
@@ -54,7 +54,7 @@ struct CartView: View {
                 }.padding([.bottom, .horizontal])
 
                 if viewModel.selectedCoupon != nil {
-                    VStack(spacing: 12){
+                    VStack(spacing: 12) {
                         HStack {
                             Text("Cart total: ")
                             Spacer()
@@ -76,7 +76,7 @@ struct CartView: View {
                     .bold()
                 Button(action: {
                     checkout.toggle()
-                }) {
+                }, label: {
                     Text("Checkout")
                         .foregroundColor(.white)
                         .font(.headline)
@@ -84,21 +84,26 @@ struct CartView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.orange)
                         .cornerRadius(10)
-                }
+                })
                 .padding(.horizontal)
                 .alert(isPresented: $checkout) {
-                    Alert(title: Text("Checkout complete"), message: Text("Please shop again :)"), dismissButton: .destructive(Text("ok"), action: {
-                        viewModel.checkoutCart()
-                        presentationMode.wrappedValue.dismiss()
-                    }) )
+                    Alert(
+                        title: Text("Checkout complete"),
+                        message: Text("Please shop again :)"),
+                        dismissButton: .destructive(Text("ok"), action: checkoutAction)
+                    )
                 }
             } else {
                 Text("Cart is empty")
             }
         }.navigationTitle("Your Cart")
-            .navigationBarItems(trailing: Text("^[\(viewModel.totalNumberOfItems) Item](inflect: true)").foregroundStyle(.orange))
+            .navigationBarItems(
+                trailing: Text("^[\(viewModel.totalNumberOfItems) Item](inflect: true)").foregroundStyle(.orange)
+            )
     }
-    
-    
-}
 
+    func checkoutAction() {
+        viewModel.checkoutCart()
+        presentationMode.wrappedValue.dismiss()
+    }
+}

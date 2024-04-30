@@ -11,7 +11,7 @@ struct NetworkErrorView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack{
+            HStack {
              Spacer()
                 Image(systemName: "network.slash")
                     .resizable()
@@ -20,13 +20,10 @@ struct NetworkErrorView: View {
                     .foregroundColor(.primary)
                 Spacer()
             }
-           
-            
             Text("No internet connection")
                 .font(.title)
                 .foregroundColor(.primary)
                 .padding()
-            
             Text("Please check your connection and try again.")
                 .font(.body)
                 .foregroundColor(.gray)
@@ -42,4 +39,3 @@ struct NetworkErrorView: View {
 #Preview {
     NetworkErrorView()
 }
-

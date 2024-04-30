@@ -14,7 +14,7 @@ struct OnboardingView: View {
     @ObservedObject var viewModel = OnboardingViewModel()
     @Environment(\.modelContext) var modelContext
     var body: some View {
-        VStack{
+        VStack {
             headingView
             descriptionView
             if isDone {
@@ -36,7 +36,7 @@ struct OnboardingView: View {
                         .animation(.spring(), value: isOnboardingDone)
                 })
             } else {
-                HStack{
+                HStack {
                     ProgressView()
                     Text("Fetching products...")
                 }
@@ -49,7 +49,7 @@ struct OnboardingView: View {
                  enableGetStarted()
                 } else {
                     let fetchedProducts = try await viewModel.fetchProducts()
-                    if let products = fetchedProducts{
+                    if let products = fetchedProducts {
                         fetched = true
                         await saveProducts(products)
                     }
@@ -57,7 +57,7 @@ struct OnboardingView: View {
             }
         })
     }
-    
+
     func saveProducts(_ products: ProductsModel) async {
         Task {
             for product in products.products {
@@ -68,7 +68,7 @@ struct OnboardingView: View {
             enableGetStarted()
         }
     }
-    
+
     func saveProduct(_ product: ProductModel) async throws {
         if let title = product.title,
            let id = product.id,
@@ -77,19 +77,24 @@ struct OnboardingView: View {
            let category = product.category,
            let thumbnail = product.thumbnail,
            let images = product.images {
-            let databaseProduct = Product(id: id, category: category, title: title, desc: description, price: price, thumbnail: thumbnail, images: images)
+            let databaseProduct = Product(
+                id: id,
+                category: category,
+                title: title,
+                desc: description,
+                price: price,
+                thumbnail: thumbnail,
+                images: images
+            )
             modelContext.insert(databaseProduct)
         }
     }
-    
-    
-    
+
   @MainActor
     func enableGetStarted() {
         withAnimation {
             isDone = true
         }
-     
     }
     var headingView: some View {
         HStack {
@@ -101,19 +106,14 @@ struct OnboardingView: View {
                 .bold()
         }.foregroundStyle(.orange)
     }
-    
     var descriptionView: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text("Welcome to Shoppers Stop!")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.vertical)
-            Text("Your one-stop destination for all your shopping needs. Discover trending products in various categories, and enjoy a seamless shopping experience.")
+            Text("Your one-stop destination for all your shopping needs.")
+            Text("Discover trending products in various categories, and enjoy a seamless shopping experience.")
         }.padding()
-       
-
     }
 }
-
-
-

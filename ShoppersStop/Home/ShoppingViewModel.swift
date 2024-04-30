@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 class ShoppingViewModel: ObservableObject {
-    
     var productService = ProductsService()
     @Published var allProducts: [Product] = []
     @Published var selectedCategory: ProductCategory = .all {
@@ -18,15 +17,15 @@ class ShoppingViewModel: ObservableObject {
         }
     }
     @Published var filteredProducts: [Product] = []
-    
-    func getProducts() async {
+
+    func getProducts() {
         Task {
-            let products = productService.fetchProducts()
+            let products =  productService.fetchProducts()
             self.allProducts = products
             filterProducts()
         }
     }
-    
+
     func filterProducts() {
         if selectedCategory == .all {
             self.filteredProducts = allProducts
@@ -34,6 +33,4 @@ class ShoppingViewModel: ObservableObject {
             self.filteredProducts = allProducts.filter({$0.category == selectedCategory.rawValue})
         }
     }
-    
 }
-

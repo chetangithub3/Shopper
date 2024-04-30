@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
     @Environment(NetworkMonitor.self) private var networkMonitor
-    
+
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -21,10 +21,9 @@ struct MainView: View {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-    
+
     var body: some View {
         VStack {
-         
                 if isOnboardingDone {
                     HomeView()
                 } else {
@@ -33,11 +32,9 @@ struct MainView: View {
                     } else {
                         NetworkErrorView()
                     }
-                  
                 }
-            
         } .overlay {
-            if !networkMonitor.isConnected{
+            if !networkMonitor.isConnected {
                 NetworkErrorView()
             }
         }

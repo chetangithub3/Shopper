@@ -35,7 +35,7 @@ class Product: Hashable {
     let price: Int
     let thumbnail: String?
     let images: [String]?
-    
+
     init(id: Int, category: String, title: String, desc: String, price: Int, thumbnail: String?, images: [String]?) {
         self.id = id
         self.category = category
