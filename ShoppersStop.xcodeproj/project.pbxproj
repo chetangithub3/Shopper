@@ -204,6 +204,8 @@
 				6111993E2BE0225F006E4E59 /* MainView.swift */,
 				611199402BE02283006E4E59 /* Utility.swift */,
 				611199392BDB5B31006E4E59 /* Launch Screen.storyboard */,
+				611199852BE1929E006E4E59 /* Coupon */,
+				611199842BE1924F006E4E59 /* Cart */,
 				611199262BD76DEC006E4E59 /* Home */,
 				611199232BD76DA6006E4E59 /* Onboarding */,
 				611199242BD76DC8006E4E59 /* ReusableViews */,
@@ -276,19 +278,33 @@
 			isa = PBXGroup;
 			children = (
 				6111991C2BD75BC3006E4E59 /* ShoppingViewModel.swift */,
-				611199312BD96D02006E4E59 /* Coupon.swift */,
 				611199182BD753B9006E4E59 /* HomeView.swift */,
-				6111992F2BD8455F006E4E59 /* CartButton.swift */,
 				6111992B2BD814CF006E4E59 /* ProductView.swift */,
 				6111992D2BD814F6006E4E59 /* ProductDetailView.swift */,
-				6111994A2BE17D14006E4E59 /* CouponItem.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		611199842BE1924F006E4E59 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				6111992F2BD8455F006E4E59 /* CartButton.swift */,
 				611199292BD8134B006E4E59 /* CartView.swift */,
 				611199472BE057F0006E4E59 /* CartItem.swift */,
 				611199422BE02306006E4E59 /* CartStepper.swift */,
 				611199272BD81266006E4E59 /* CartViewModel.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		611199852BE1929E006E4E59 /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				611199312BD96D02006E4E59 /* Coupon.swift */,
+				6111994A2BE17D14006E4E59 /* CouponItem.swift */,
 				611199352BD97767006E4E59 /* CouponListView.swift */,
 			);
-			path = Home;
+			path = Coupon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
