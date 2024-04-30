@@ -14,14 +14,13 @@ struct APIManager {
             return .failure(NetworkError.badRequest)
         }
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, _) = try await URLSession.shared.data(for: request)
             return .success(data)
            
         } catch {
             return .failure(NetworkError.unknown(nil))
         }
     
-        return .failure(NetworkError.unknown(nil))
     }
        
   

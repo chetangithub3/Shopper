@@ -21,7 +21,7 @@ class ShoppingViewModel: ObservableObject {
     
     func getProducts() async {
         Task {
-            let products = await productService.fetchProducts()
+            let products = productService.fetchProducts()
             self.allProducts = products
             filterProducts()
         }

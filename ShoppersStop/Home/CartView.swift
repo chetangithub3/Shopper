@@ -53,7 +53,7 @@ struct CartView: View {
                     .cornerRadius(8)
                 }.padding([.bottom, .horizontal])
 
-                if let selectedCoupon = viewModel.selectedCoupon {
+                if viewModel.selectedCoupon != nil {
                     VStack(spacing: 12){
                         HStack {
                             Text("Cart total: ")
