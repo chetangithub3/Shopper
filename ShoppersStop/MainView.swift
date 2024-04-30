@@ -24,15 +24,15 @@ struct MainView: View {
 
     var body: some View {
         VStack {
-                if isOnboardingDone {
-                    HomeView()
+            if isOnboardingDone {
+                HomeView()
+            } else {
+                if networkMonitor.isConnected {
+                    OnboardingView()
                 } else {
-                    if networkMonitor.isConnected {
-                        OnboardingView()
-                    } else {
-                        NetworkErrorView()
-                    }
+                    NetworkErrorView()
                 }
+            }
         } .overlay {
             if !networkMonitor.isConnected {
                 NetworkErrorView()
