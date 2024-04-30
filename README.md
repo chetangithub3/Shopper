@@ -104,16 +104,13 @@ At least one SwiftUI animation.
 Styled text properties. SwiftUI modifiers are sufficient.
 ------>Done  
 
-
+The project utilizes SwiftLint with Kodeco’s configuration file. Follow the instructions in the Kodeco Swift style guide to install it with Homebrew and the Build Run Script Phase. Don’t install it as a package. If you disable any rule for a line of code, explain why in a comment near the disable comment or, if it’s a general situation, explain in the README.  
+------>Done
 
 
 
 TODO:
 -----
-
-
-The project utilizes SwiftLint with Kodeco’s configuration file. Follow the instructions in the Kodeco Swift style guide to install it with Homebrew and the Build Run Script Phase. Don’t install it as a package. If you disable any rule for a line of code, explain why in a comment near the disable comment or, if it’s a general situation, explain in the README.  
------->To Do  
 
 The project has a test plan including both UI and unit tests, with a minimum of 50% code coverage, and all tests succeed. Make sure your test plan is in your repo.
 ------>To Do  
