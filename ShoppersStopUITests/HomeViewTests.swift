@@ -15,6 +15,4 @@ class HomeViewTests: XCTestCase {
         view.viewModel.selectedCategory = .smartphones
         XCTAssertEqual(view.viewModel.selectedCategory, .smartphones)
     }
-
-    // Add other test cases for HomeView as described in the previous response
 }

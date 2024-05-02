@@ -16,16 +16,6 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    Picker("", selection: $viewModel.selectedCategory) {
-                        ForEach(ProductCategory.allCases, id: \.self) { category in
-                            Text(category.rawValue.capitalized)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal)
-                    .padding(.top)
-                }
                 ScrollView(.vertical) {
                     LazyVGrid(
                         columns: [GridItem(.flexible(),
@@ -38,11 +28,34 @@ struct HomeView: View {
                     .padding()
                 }.navigationTitle("Shopper's Stop")
                     .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(leading: CategoryPicker().environmentObject(viewModel))
                     .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
                     .task {
                          viewModel.getProducts()
                     }
             }
+        }
+    }
+}
+
+struct CategoryPicker: View {
+    @EnvironmentObject var viewModel: ShoppingViewModel
+    var body: some View {
+        Menu {
+            ForEach(ProductCategory.allCases, id: \.self) { category in
+                Button(action: {
+                    viewModel.selectedCategory = category
+                }, label: {
+                    HStack {
+                        Text(category.rawValue.capitalized).foregroundColor(.orange)
+                        if category == viewModel.selectedCategory {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                })
+            }
+        } label: {
+            Image(systemName: "line.3.horizontal.decrease.circle").foregroundColor(.orange)
         }
     }
 }

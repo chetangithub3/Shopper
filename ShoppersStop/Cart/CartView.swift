@@ -51,8 +51,9 @@ struct CartView: View {
                         .background(Color.black)
                         .cornerRadius(8)
                     }.padding([.bottom, .horizontal])
+                }
                     if viewModel.selectedCoupon != nil {
-                        VStack(spacing: 12) {
+                        VStack(spacing: 8) {
                             HStack {
                                 Text("Cart total: ")
                                 Spacer()
@@ -64,13 +65,15 @@ struct CartView: View {
                                 Text("-\(String(format: "%.2f", viewModel.discountedAmount))")
                             }.foregroundColor(.orange)
                             Divider()
-                        }.padding()
+                        }.padding(.horizontal)
+                            .padding(.bottom, 4)
                     }
                     HStack {
                         Text("Total: ")
                         Spacer()
                         Text("\(String(format: "%.2f", viewModel.totalPrice))")
-                    }.padding([.horizontal, .bottom])
+                    }.padding(.horizontal)
+                    .padding(.bottom, 4)
                         .bold()
                     Button(action: {
                         checkout.toggle()
@@ -91,7 +94,6 @@ struct CartView: View {
                             dismissButton: .destructive(Text("ok"), action: checkoutAction)
                         )
                     }
-                }
             } else {
                 Text("Cart is empty")
             }
