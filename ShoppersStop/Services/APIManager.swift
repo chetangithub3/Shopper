@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct APIManager {
+protocol APIManagerService {
+    func fetch(request: URLRequest?) async -> Result<Data, Error>
+}
+
+struct APIManager: APIManagerService {
 
     func fetch(request: URLRequest?) async -> Result<Data, Error> {
         guard let request = request else {

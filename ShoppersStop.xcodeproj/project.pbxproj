@@ -90,6 +90,7 @@
 		611199802BE18E16006E4E59 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199442BE02347006E4E59 /* ImageLoader.swift */; };
 		611199812BE18E16006E4E59 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199442BE02347006E4E59 /* ImageLoader.swift */; };
 		611199832BE18E60006E4E59 /* ShoppingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */; };
+		611199872BE34518006E4E59 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		6111994A2BE17D14006E4E59 /* CouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponItem.swift; sourceTree = "<group>"; };
 		6111994E2BE18DA8006E4E59 /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
 		611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewModelTests.swift; sourceTree = "<group>"; };
+		611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				611198F52BD72820006E4E59 /* ShoppersStopTests.swift */,
+				611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */,
 				611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */,
 			);
 			path = ShoppersStopTests;
@@ -508,6 +511,7 @@
 				611199802BE18E16006E4E59 /* ImageLoader.swift in Sources */,
 				611199762BE18E08006E4E59 /* ImageView.swift in Sources */,
 				611199722BE18E02006E4E59 /* OnboardingViewModel.swift in Sources */,
+				611199872BE34518006E4E59 /* OnboardingViewModelTests.swift in Sources */,
 				6111996C2BE18DF8006E4E59 /* CouponListView.swift in Sources */,
 				611199542BE18DD5006E4E59 /* MainView.swift in Sources */,
 				611199832BE18E60006E4E59 /* ShoppingViewModelTests.swift in Sources */,

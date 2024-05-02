@@ -9,7 +9,7 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject {
 
-    var apiManager = APIManager()
+    var apiManager: APIManagerService = APIManager()
     @Published var error: String?
     var couponService = CouponService()
     @Published var fetchedProducts: ProductsModel?
