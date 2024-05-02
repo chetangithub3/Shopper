@@ -121,4 +121,13 @@ final class ShoppingViewModelTests: XCTestCase {
         viewModel.selectedCategory = .smartphones
         XCTAssertEqual(viewModel.filteredProducts.count, 2)
     }
+
+    @MainActor
+    func testDefaultCategoryFilterWithEmptyProductList() {
+        let viewModel = ShoppingViewModel()
+        viewModel.allProducts = [] // Empty product list
+        viewModel.selectedCategory = .all
+        viewModel.filterProducts()
+        XCTAssertTrue(viewModel.filteredProducts.isEmpty)
+    }
 }
