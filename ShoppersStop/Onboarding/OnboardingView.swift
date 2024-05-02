@@ -36,9 +36,13 @@ struct OnboardingView: View {
                         .animation(.spring(), value: isOnboardingDone)
                 })
             } else {
-                HStack {
-                    ProgressView()
-                    Text("Fetching products...")
+                if viewModel.error != nil {
+                    Text("Error fetching products")
+                } else {
+                    HStack {
+                        ProgressView()
+                        Text("Fetching products...")
+                    }
                 }
             }
         }

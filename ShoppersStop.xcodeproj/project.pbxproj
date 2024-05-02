@@ -91,6 +91,7 @@
 		611199812BE18E16006E4E59 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199442BE02347006E4E59 /* ImageLoader.swift */; };
 		611199832BE18E60006E4E59 /* ShoppingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */; };
 		611199872BE34518006E4E59 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */; };
+		611199892BE34999006E4E59 /* CartViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611199882BE34999006E4E59 /* CartViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		6111994E2BE18DA8006E4E59 /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
 		611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewModelTests.swift; sourceTree = "<group>"; };
 		611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
+		611199882BE34999006E4E59 /* CartViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				611198F52BD72820006E4E59 /* ShoppersStopTests.swift */,
 				611199862BE34518006E4E59 /* OnboardingViewModelTests.swift */,
 				611199822BE18E60006E4E59 /* ShoppingViewModelTests.swift */,
+				611199882BE34999006E4E59 /* CartViewModelTests.swift */,
 			);
 			path = ShoppersStopTests;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				6111996E2BE18DFC006E4E59 /* Products.swift in Sources */,
 				6111996A2BE18DF5006E4E59 /* CartViewModel.swift in Sources */,
 				6111995A2BE18DDE006E4E59 /* HomeView.swift in Sources */,
+				611199892BE34999006E4E59 /* CartViewModelTests.swift in Sources */,
 				611199642BE18DED006E4E59 /* CartView.swift in Sources */,
 				611199522BE18DD2006E4E59 /* ShoppersStopApp.swift in Sources */,
 				611199802BE18E16006E4E59 /* ImageLoader.swift in Sources */,
