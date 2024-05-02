@@ -19,7 +19,7 @@ class ImageLoader: ObservableObject {
             image = UIImage(data: data)
         } catch {
             print("Error loading image: \(error.localizedDescription)")
-            image = nil
+            image = UIImage(systemName: "exclamationmark.triangle")
         }
     }
 }

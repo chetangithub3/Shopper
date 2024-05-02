@@ -33,10 +33,6 @@ struct MainView: View {
                     NetworkErrorView()
                 }
             }
-        } .overlay {
-            if !networkMonitor.isConnected {
-                NetworkErrorView()
-            }
         }
     }
 }
