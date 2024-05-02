@@ -23,7 +23,7 @@ final class CartViewModelTests: XCTestCase {
             thumbnail: nil,
             images: nil
         )
-       return product
+        return product
     }
     func getTestProduct2() -> Product {
         let id = 2
@@ -40,7 +40,7 @@ final class CartViewModelTests: XCTestCase {
             thumbnail: nil,
             images: nil
         )
-       return product
+        return product
     }
 
     func testAddToCart() {

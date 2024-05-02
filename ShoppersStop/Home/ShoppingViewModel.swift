@@ -20,7 +20,7 @@ class ShoppingViewModel: ObservableObject {
 
     func getProducts() {
         Task {
-            let products =  productService.fetchProducts()
+            let products = productService.fetchProducts()
             self.allProducts = products
             filterProducts()
         }
@@ -30,7 +30,7 @@ class ShoppingViewModel: ObservableObject {
         if selectedCategory == .all {
             self.filteredProducts = allProducts
         } else {
-            self.filteredProducts = allProducts.filter({$0.category == selectedCategory.rawValue})
+            self.filteredProducts = allProducts.filter { $0.category == selectedCategory.rawValue }
         }
     }
 }

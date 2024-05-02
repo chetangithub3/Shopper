@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CartView: View {
-
     @EnvironmentObject var viewModel: CartViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode)
+    var presentationMode
     @State var checkout = false
 
     var body: some View {
         VStack(spacing: 0) {
             if !viewModel.cartItems.isEmpty {
                 ScrollView {
-                    ForEach(viewModel.cartItems.sorted(by: { $0.key.id < $1.key.id }), id: \.key.id) { (key, value) in
+                    ForEach(viewModel.cartItems.sorted { $0.key.id < $1.key.id }, id: \.key.id) { key, value in
                         CartItem(cartItem: (key, value))
                     }
                     NavigationLink {

@@ -8,8 +8,8 @@ import XCTest
 import Foundation
 
 class HomeViewTests: XCTestCase {
-
-    @MainActor func testPickerSelection() {
+    @MainActor
+    func testPickerSelection() {
         let viewModel = ShoppingViewModel()
         let view = HomeView(viewModel: viewModel)
         view.viewModel.selectedCategory = .smartphones

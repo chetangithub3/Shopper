@@ -8,8 +8,8 @@
 import XCTest
 
 final class ShoppingViewModelTests: XCTestCase {
-
-    @MainActor func testFetchProducts() {
+    @MainActor
+    func testFetchProducts() {
         let shoppingVM = ShoppingViewModel()
         let product1 = Product(
             id: 1,

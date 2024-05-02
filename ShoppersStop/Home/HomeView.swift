@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext)
+    var modelContext
     @State var products: [Product] = []
     @StateObject var viewModel = ShoppingViewModel()
     @StateObject var cartViewModel = CartViewModel()
+    var column = GridItem(.flexible(), spacing: 16)
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 ScrollView(.vertical) {
                     LazyVGrid(
-                        columns: [GridItem(.flexible(),
-                                           spacing: 16), GridItem(.flexible(), spacing: 16)],
+                        columns: [column, column],
                         spacing: 16) {
                         ForEach(viewModel.filteredProducts, id: \.id) { product in
                             ProductView(product: product).environmentObject(cartViewModel)
@@ -31,7 +32,7 @@ struct HomeView: View {
                     .navigationBarItems(leading: CategoryPicker().environmentObject(viewModel))
                     .navigationBarItems(trailing: CartButton().environmentObject(cartViewModel))
                     .task {
-                         viewModel.getProducts()
+                        viewModel.getProducts()
                     }
             }
         }

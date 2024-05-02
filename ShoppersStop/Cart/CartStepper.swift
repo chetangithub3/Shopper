@@ -33,7 +33,6 @@ struct CartStepper: View {
                 Image(systemName: "plus")
                     .foregroundColor(self.itemCount < self.range.upperBound ? .white : .gray)
             }
-
         }
     }
 }

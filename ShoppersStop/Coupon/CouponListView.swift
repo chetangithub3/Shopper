@@ -17,7 +17,7 @@ struct CouponListView: View {
             } else {
                 ScrollView {
                     ForEach(cartViewModel.coupons, id: \.id) { coupon in
-                      CouponItem(coupon: coupon)
+                        CouponItem(coupon: coupon)
                     }.padding(.top)
                 }
                 Spacer()

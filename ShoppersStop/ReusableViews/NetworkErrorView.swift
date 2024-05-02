@@ -12,7 +12,7 @@ struct NetworkErrorView: View {
         VStack {
             Spacer()
             HStack {
-             Spacer()
+                Spacer()
                 Image(systemName: "network.slash")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

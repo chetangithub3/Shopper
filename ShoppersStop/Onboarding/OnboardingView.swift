@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage("isOnboardingDone") var isOnboardingDone: Bool = false
-    @AppStorage("fetched") var fetched: Bool = false
-    @State var isDone: Bool = false
+    @AppStorage("isOnboardingDone")
+    var isOnboardingDone = false
+    @AppStorage("fetched")
+    var fetched = false
+    @State var isDone = false
     @ObservedObject var viewModel = OnboardingViewModel()
-    @Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext)
+    var modelContext
+
     var body: some View {
         VStack {
             headingView
@@ -50,7 +54,7 @@ struct OnboardingView: View {
         .onAppear(perform: {
             Task {
                 if fetched {
-                 enableGetStarted()
+                    enableGetStarted()
                 } else {
                     let fetchedProducts = try await viewModel.fetchProducts()
                     if let products = fetchedProducts {
@@ -75,26 +79,26 @@ struct OnboardingView: View {
 
     func saveProduct(_ product: ProductModel) async throws {
         if let title = product.title,
-           let id = product.id,
-           let description = product.description,
-           let price = product.price,
-           let category = product.category,
-           let thumbnail = product.thumbnail,
-           let images = product.images {
-            let databaseProduct = Product(
-                id: id,
-                category: category,
-                title: title,
-                desc: description,
-                price: price,
-                thumbnail: thumbnail,
-                images: images
+        let id = product.id,
+        let description = product.description,
+        let price = product.price,
+        let category = product.category,
+        let thumbnail = product.thumbnail,
+        let images = product.images {
+        let databaseProduct = Product(
+            id: id,
+            category: category,
+            title: title,
+            desc: description,
+            price: price,
+            thumbnail: thumbnail,
+            images: images
             )
             modelContext.insert(databaseProduct)
         }
     }
 
-  @MainActor
+    @MainActor
     func enableGetStarted() {
         withAnimation {
             isDone = true

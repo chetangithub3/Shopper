@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @EnvironmentObject var cartViewModel: CartViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode)
+    var presentationMode
     var product: Product
 
     @State var showStepper = false
     @State var count = 1
 
     var body: some View {
-        ZStack(alignment: .bottom, content: {
+        ZStack(alignment: .bottom) {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 0) {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -94,7 +95,7 @@ struct ProductDetailView: View {
                     .foregroundColor(.white)
                 })
             }
-        })
+        }
         .onChange(of: cartViewModel.checkout, { _, newValue in
             if newValue {
                 presentationMode.wrappedValue.dismiss()

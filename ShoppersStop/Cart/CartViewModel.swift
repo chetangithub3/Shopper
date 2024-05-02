@@ -8,7 +8,6 @@
 import Foundation
 
 class CartViewModel: ObservableObject {
-
     var couponService = CouponService()
 
     @Published var cartItems: [Product: Int] = [:] {
@@ -79,14 +78,14 @@ class CartViewModel: ObservableObject {
     }
 
     func fetchCoupons() async {
-        let coupons  = await couponService.fetchCoupons()
+        let coupons = await couponService.fetchCoupons()
         await MainActor.run {
             self.coupons = coupons
         }
     }
 
     func removeCoupon(coupon: Coupon) {
-        if let index = coupons.firstIndex(where: {$0.id == coupon.id}) {
+        if let index = coupons.firstIndex(where: { $0.id == coupon.id }) {
             coupons.remove(at: index)
         }
     }

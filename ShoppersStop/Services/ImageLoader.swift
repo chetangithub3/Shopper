@@ -10,7 +10,6 @@ import UIKit
 
 @MainActor
 class ImageLoader: ObservableObject {
-
     @Published var image: UIImage?
 
     func loadImage(from url: URL) async {

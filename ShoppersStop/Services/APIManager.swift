@@ -12,7 +12,6 @@ protocol APIManagerService {
 }
 
 struct APIManager: APIManagerService {
-
     func fetch(request: URLRequest?) async -> Result<Data, Error> {
         guard let request = request else {
             return .failure(NetworkError.badRequest)
@@ -32,17 +31,17 @@ struct APIManager: APIManagerService {
 
         switch httpResponse.statusCode {
         case 200..<300:
-                return nil
+            return nil
         case 400:
-                throw NetworkError.badRequest
+            throw NetworkError.badRequest
         case 403:
-                throw NetworkError.forbidden
+            throw NetworkError.forbidden
         case 404:
-                throw NetworkError.notFound
+            throw NetworkError.notFound
         case 422:
-                throw NetworkError.unprocessableEntity
+            throw NetworkError.unprocessableEntity
         default:
-                throw NetworkError.unknown(nil)
+            throw NetworkError.unknown(nil)
         }
     }
 }

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CouponItem: View {
-
     @EnvironmentObject var cartViewModel: CartViewModel
-     var coupon: Coupon
-    @Environment(\.presentationMode) var presentationMode
+    var coupon: Coupon
+    @Environment(\.presentationMode)
+    var presentationMode
 
     var body: some View {
         HStack(spacing: 0) {
