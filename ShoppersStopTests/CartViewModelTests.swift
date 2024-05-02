@@ -44,14 +44,14 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testAddToCart() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product = getTestProduct()
         viewModel.addToCart(product: product)
         XCTAssertNotNil(viewModel.cartItems[product])
     }
 
     func testUpdateQuantity() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product = getTestProduct()
         viewModel.addToCart(product: product)
         viewModel.updateQuantity(product: product, quantity: 5)
@@ -59,7 +59,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testRemoveProduct() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product = getTestProduct()
         viewModel.addToCart(product: product)
         viewModel.removeProduct(product: product)
@@ -67,7 +67,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testCalculateTotalCost() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product1 = getTestProduct()
         let product2 = getTestProduct2()
         viewModel.addToCart(product: product1)
@@ -78,7 +78,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testCalculateTotalCostWithCoupon() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product1 = getTestProduct()
         let product2 = getTestProduct2()
         viewModel.addToCart(product: product1)
@@ -89,7 +89,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testCalculateTotalNumberOfItems() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let product1 = getTestProduct()
         let product2 = getTestProduct2()
         viewModel.addToCart(product: product1)
@@ -99,7 +99,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testRemoveCoupon() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let couponToRemove = Coupon(name: "test", code: "mock", discount: 0.5)
         let initialCoupons = [
             Coupon(
@@ -120,7 +120,7 @@ final class CartViewModelTests: XCTestCase {
     }
 
     func testCheckoutCart() {
-        var viewModel = CartViewModel()
+        let viewModel = CartViewModel()
         let selectedCoupon = Coupon(name: "test", code: "mock", discount: 0.5)
         viewModel.selectedCoupon = selectedCoupon
         viewModel.checkoutCart()
