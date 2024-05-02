@@ -14,9 +14,7 @@ struct CartStepper: View {
     var body: some View {
         HStack {
             Button {
-                if self.itemCount > self.range.lowerBound {
-                    self.itemCount -= 1
-                }
+                decrementItemCount()
             } label: {
                 Image(systemName: "minus")
                     .foregroundColor(self.itemCount > self.range.lowerBound ? .white : .gray)
@@ -26,13 +24,21 @@ struct CartStepper: View {
                 .bold()
                 .foregroundStyle(.white)
             Button {
-                if self.itemCount < self.range.upperBound {
-                    self.itemCount += 1
-                }
+                incrementItemCount()
             } label: {
                 Image(systemName: "plus")
                     .foregroundColor(self.itemCount < self.range.upperBound ? .white : .gray)
             }
+        }
+    }
+    func incrementItemCount() {
+        if self.itemCount < self.range.upperBound {
+            self.itemCount += 1
+        }
+    }
+    func decrementItemCount() {
+        if self.itemCount > self.range.lowerBound {
+            self.itemCount -= 1
         }
     }
 }

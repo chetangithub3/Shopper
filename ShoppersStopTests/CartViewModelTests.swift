@@ -76,7 +76,14 @@ final class CartViewModelTests: XCTestCase {
         viewModel.calculateTotalCost()
         XCTAssertEqual(viewModel.totalPrice, 1000)
     }
-
+    func testCalculateDiscountWithCoupon() {
+        let viewModel = CartViewModel()
+        let product = getTestProduct()
+        viewModel.addToCart(product: product)
+        let coupon = Coupon(name: "test", code: "mock", discount: 0.1) // 10% discount
+        viewModel.selectedCoupon = coupon
+        XCTAssertEqual(viewModel.discountedAmount, 99.9)
+    }
     func testCalculateTotalCostWithCoupon() {
         let viewModel = CartViewModel()
         let product1 = getTestProduct()
@@ -86,6 +93,16 @@ final class CartViewModelTests: XCTestCase {
         viewModel.selectedCoupon = Coupon(name: "test", code: "mock", discount: 0.5)
         viewModel.calculateTotalCost()
         XCTAssertEqual(viewModel.totalPrice, 500)
+    }
+    func testCalculateCartTotalWithoutCoupon() {
+        let viewModel = CartViewModel()
+        let product1 = getTestProduct()
+        let product2 = getTestProduct2()
+        viewModel.addToCart(product: product1)
+        viewModel.addToCart(product: product2)
+        viewModel.selectedCoupon = Coupon(name: "test", code: "mock", discount: 0.5)
+        viewModel.calculateTotalCost()
+        XCTAssertEqual(viewModel.cartTotal, 1000)
     }
 
     func testCalculateTotalNumberOfItems() {

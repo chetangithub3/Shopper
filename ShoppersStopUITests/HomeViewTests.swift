@@ -12,7 +12,7 @@ class HomeViewTests: XCTestCase {
     func testPickerSelection() {
         let viewModel = ShoppingViewModel()
         let view = HomeView(viewModel: viewModel)
-        view.viewModel.selectedCategory = .smartphones
+        viewModel.selectedCategory = .smartphones
         XCTAssertEqual(view.viewModel.selectedCategory, .smartphones)
     }
 }
